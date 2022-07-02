@@ -92,7 +92,7 @@ const SideBar = () => {
             </Drawer.Item>
             <Drawer.Item>
               <NavLink
-                to="/usermanage"
+                to="/revenue"
                 className={({ isActive }) =>
                   isActive ? "NavLink-active" : "NavLink"
                 }

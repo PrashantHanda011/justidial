@@ -41,7 +41,7 @@ const UserDetails = () => {
                 </Form>
               </div>
               <div
-                class={
+                className={
                   show
                     ? "report-top-right-button"
                     : "report-top-right-button-collapse"

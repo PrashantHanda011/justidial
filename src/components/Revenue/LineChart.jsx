@@ -35,9 +35,9 @@ const LineChart = () => {
       {
         label: "Cash-Flow",
         fill: false,
-        borderColor: "#91cfff",
-        backgroundColor: "#249bf7",
-        data: [10, 20, 13, 23, 40, 35,70],
+        borderColor: "#FF9933",
+        backgroundColor: "#FF9933",
+        data: [10, 30, 70, 3, 20, 35,10,60,20],
         tension: 0.5,
       },
     ],

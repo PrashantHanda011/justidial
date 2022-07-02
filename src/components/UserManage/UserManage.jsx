@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 import { Row, Form, InputGroup } from "react-bootstrap";
 import CommonHeader from "../Header/Header";
 import { BsSearch } from "react-icons/bs";
-import { AiFillQuestionCircle, AiOutlineCaretDown } from "react-icons/ai";
+// import { AiFillQuestionCircle, AiOutlineCaretDown } from "react-icons/ai";
 import TableData from "./Table";
 
 const UsersManage = () => {
@@ -85,7 +85,7 @@ const UsersManage = () => {
             ) : (
               <div className="d-flex justify-content-center mt-5">
                 <div className="loading-main ">
-                  <div class="loader" />
+                  <div className="loader" />
                 </div>
               </div>
             )}

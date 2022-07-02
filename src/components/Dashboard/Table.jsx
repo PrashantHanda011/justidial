@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
-import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+// import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
 
-const DashTable = ({ work, page, total, filter, user }) => {
-  const navigate = useNavigate();
-  const [pg, setPg] = useState([1, 2, 3, 4, 5]);
+const DashTable = ({ filter, user }) => {
   const [input, setInput] = useState({
     invoiceDate: "",
     invoiceNo: "",
@@ -19,9 +16,6 @@ const DashTable = ({ work, page, total, filter, user }) => {
     setInput({ ...input, [name]: e.target.value });
   };
 
-  function details() {
-    navigate("details");
-  }
   return (
     <>
       {user?.length !== 0 ? (
@@ -104,54 +98,18 @@ const DashTable = ({ work, page, total, filter, user }) => {
               <>
                 <tbody key={id} style={{ border: "none" }}>
                   <tr>
-                    <td
-                      className="Rtable-data"
-                      onClick={() => details()}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {id + 1}
-                    </td>
-                    <td
-                      className="Rtable-data"
-                      onClick={() => details()}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {data?.name}
-                    </td>
-                    <td
-                      className="Rtable-data"
-                      onClick={() => details()}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {data?.email}
-                    </td>
-                    <td
-                      className="Rtable-data"
-                      onClick={() => details()}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {data?.number}
-                    </td>
+                    <td className="Rtable-data">{id + 1}</td>
+                    <td className="Rtable-data">{data?.name}</td>
+                    <td className="Rtable-data">{data?.email}</td>
+                    <td className="Rtable-data">{data?.number}</td>
 
-                    <td
-                      className="Rtable-data"
-                      onClick={() => details()}
-                      style={{ cursor: "pointer" }}
-                    >
+                    <td className="Rtable-data">
                       {data?.city}, {data?.state}
                     </td>
+                    <td className="Rtable-data">{data?.plan}</td>
                     <td
                       className="Rtable-data"
-                      onClick={() => details()}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {data?.plan}
-                    </td>
-                    <td
-                      className="Rtable-data"
-                      onClick={() => details()}
                       style={{
-                        cursor: "pointer",
                         color: "#28318C",
                       }}
                     >
@@ -166,7 +124,7 @@ const DashTable = ({ work, page, total, filter, user }) => {
       ) : (
         <div style={{ margin: "6em" }}>
           <div className="loading-main">
-            <div class="loader"></div>
+            <div className="loader"></div>
           </div>
           <h5>Loading...</h5>
         </div>

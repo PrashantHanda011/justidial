@@ -5,20 +5,20 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Landing from "../src/components/Landing/Landing";
 import Register from "../src/components/Register/Register";
 import SideBar from "./components/SideBar/SideBar";
+ import ClientDashboard from "./components/Dashboard/Dashboard";
 import UserManage from "./components/UserManage/UserManage";
 import UserDetails from "./components/UserManage/UserDetails";
-import AstrologerManage from "./components/AstrologerManage/AstrologerManage";
-import AstroDetails from "./components/AstrologerManage/AstroDetails";
+import Revenue from "./components/Revenue/Revenue";
 // Clientside
-import ClientDashboard from "./components/Dashboard/Dashboard";
-import ClientPurchases from "./components/Clientside/Purchase/Purchase";
-import ClientBills from "./components/Clientside/Bills/Bills";
-import ClientInvoice from "./components/Clientside/Bills/Invoice";
-import ClientEditInvoice from "./components/Clientside/Bills/EditInvoice";
-import ClientWorkStatus from "./components/Clientside/WorkStatus/WorkStatus";
-import ClientSubscriptionCard from "./components/Clientside/SubscriptionCard/SubscriptionCard";
-import ClientWorkDetails from "./components/Clientside/WorkStatus/WorkDetails";
-import ClientChat from "./components/Clientside/Chats/Chat";
+
+// import ClientPurchases from "./components/Clientside/Purchase/Purchase";
+// import ClientBills from "./components/Clientside/Bills/Bills";
+// import ClientInvoice from "./components/Clientside/Bills/Invoice";
+// import ClientEditInvoice from "./components/Clientside/Bills/EditInvoice";
+// import ClientWorkStatus from "./components/Clientside/WorkStatus/WorkStatus";
+// import ClientSubscriptionCard from "./components/Clientside/SubscriptionCard/SubscriptionCard";
+// import ClientWorkDetails from "./components/Clientside/WorkStatus/WorkDetails";
+// import ClientChat from "./components/Clientside/Chats/Chat";
 
 import { Col, Row } from "react-bootstrap";
 const UserContext = createContext();
@@ -59,10 +59,12 @@ function App() {
                 <Route exact path="/dashboard" element={<ClientDashboard />} />
                 <Route exact path="/usermanage" element={<UserManage />} />
                 <Route exact path="/usermanage/details" element={<UserDetails />} />
-                <Route exact path="/astrologermanage" element={<AstrologerManage />} />
-                <Route exact path="/astrologermanage/details" element={<AstroDetails />} />
+                <Route exact path="/revenue" element={<Revenue />} />
+               {/* Clientside */}
+              
+              
 
-                <Route exact path="/purchases" element={<ClientPurchases />} />
+                {/* <Route exact path="/purchases" element={<ClientPurchases />} />
                 <Route exact path="/bank" element={<ClientBills />} />
                 <Route
                   exact
@@ -89,7 +91,7 @@ function App() {
                   path="/workstatus/details/:id"
                   element={<ClientWorkDetails />}
                 />
-                <Route exact path="/chats" element={<ClientChat />} />
+                <Route exact path="/chats" element={<ClientChat />} /> */}
               </Routes>
             </Col>
           </Row>

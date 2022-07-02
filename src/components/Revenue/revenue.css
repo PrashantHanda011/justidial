@@ -1,0 +1,24 @@
+.title {
+  color: #ff9933;
+}
+
+.card-rev {
+  padding: 10px;
+  border-radius: 10px;
+  width: 250px;
+  height: 170px;
+  border: 1px solid #afafaf;
+}
+.card-rev p {
+  font-weight: 600;
+  font-size: 25px;
+  color: #121212;
+}
+.card-rev h2 {
+  color: #ff9933;
+
+}
+.card-rev h6 {
+    color: #6A6A6A;
+  
+  }

@@ -177,7 +177,7 @@ function ClientWorkDetails() {
           ) : (
             <div style={{ margin: "6em" }}>
               <div className="loading-main">
-                <div class="loader"></div>
+                <div className="loader"></div>
               </div>
               <h5 style={{ textAlign: "center" }}>Loading...</h5>
             </div>

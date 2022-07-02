@@ -3,14 +3,10 @@ import { UserContext } from "../../App";
 import "./dashboard.css";
 import { DashUsers } from "../Axios/apis";
 import Cookies from "js-cookie";
-// import Group from "../../assets/group.png";
-// import Design from "../../assets/design.png";
-// import Cash from "../../assets/cash.png";
-// import BarChart from "./BarChart";
 import { Row, Form, InputGroup } from "react-bootstrap";
 import CommonHeader from "../Header/Header";
 import { BsSearch } from "react-icons/bs";
-import { AiFillQuestionCircle, AiOutlineCaretDown } from "react-icons/ai";
+
 import TableData from "./Table";
 
 const ClientDashboard = () => {
@@ -83,7 +79,7 @@ const ClientDashboard = () => {
             ) : (
               <div className="d-flex justify-content-center mt-5">
                 <div className="loading-main ">
-                  <div class="loader"/>
+                  <div className="loader"/>
                 </div>
               
               </div>

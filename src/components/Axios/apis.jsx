@@ -19,6 +19,10 @@ API.post(`/user/getUsers`,);
 export const AllUsers = () =>
 API.post(`/user/getAllUsers`,);
 
+export const FetchRevenue = () =>
+API.post(`/payment/getRevenues`,);
+
+
 
 
 export const Signup = (SignupData) =>

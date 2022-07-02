@@ -1,22 +1,21 @@
-// import React, { useEffect } from "react";
-// import Notificationicon from "../../assets/notificationicon.svg";
+import React, { useEffect } from "react";
 import User from "../../assets/user.svg";
 import { Col, Row } from "react-bootstrap";
-// import Cookies from "js-cookie";
-import { BsSearch } from "react-icons/bs";
-// import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 import { BiLogOutCircle } from "react-icons/bi";
 const CommonHeader = () => {
-  // const navigate = useNavigate();
-  // const users = localStorage.getItem("AysData");
-  // let user = JSON.parse(users);
-
-  // useEffect(() => {
-  //   if (!Cookies.get("AysToken")) {
-  //     navigate("/");
-  //     window.location.reload();
-  //   }
-  // }, []);
+  const navigate = useNavigate();
+const logout =()=>{
+  Cookies.remove('Token')
+  window.location.reload(); 
+}
+  useEffect(() => {
+    if (!Cookies.get("Token")) {
+      navigate("/");
+      window.location.reload();
+    }
+  }, []);
 
   return (
     <Row
@@ -49,7 +48,7 @@ const CommonHeader = () => {
               
               &nbsp;&nbsp; ADMIN PANEL
               <span>
-                <BiLogOutCircle size={21} title="Logout" cursor="pointer" />
+                <BiLogOutCircle size={21} title="Logout" cursor="pointer" onClick={logout} />
               </span>
             </p>
           </div>

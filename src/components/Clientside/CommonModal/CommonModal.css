@@ -1,0 +1,38 @@
+.bill-modal-dialog {
+  width: 25%;
+}
+.bill-modal-dialog > .modal-content {
+  border-radius: 1rem;
+}
+.bill-modal-header {
+  border-bottom: none;
+  padding: 1rem 1.5rem !important;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+  color: #777777;
+}
+.bill-payment-modal {
+  padding: 0rem 2rem 1rem !important;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  color: #777777;
+}
+.modal-list {
+  width: 1rem;
+  height: 1rem;
+  margin-bottom: 2rem;
+}
+.modal-footer {
+  justify-content: center;
+}
+.modal-next-btn {
+  width: 100%;
+  background: linear-gradient(93.99deg, #53b9ea 0%, #2594fb 103.31%);
+  box-shadow: 0px 5.76175px 8.64262px rgba(51, 93, 255, 0.25);
+  border-radius: 8px;
+}

@@ -1,0 +1,82 @@
+.card-main {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 295px;
+  height: 460px;
+  background: #ffffff;
+  border: 3px solid #f0f0f0;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.04);
+  border-radius: 16px;
+}
+.card-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-price {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 38px;
+  color: #53b9ea;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 8px 0px;
+}
+.card-type {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 38px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+.card-tag {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 20px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+.card-feature {
+  margin-top: 1.5rem;
+}
+.card-feature-li {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.card-feature-item {
+  margin-left: 1rem;
+}
+.subscription-card-buy-btn {
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  width: 240px;
+  height: 60px;
+  background: #53b9ea;
+  border-radius: 16px;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0.5rem 0px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  outline: none;
+  border:none;
+}
+.subscription-card-buy-btn:hover{
+  background: #2dbcff;
+}

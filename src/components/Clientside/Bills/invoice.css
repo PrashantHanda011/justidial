@@ -1,0 +1,22 @@
+.invoice-label{
+font-size: 16px;
+color: #656296;
+font-weight: 600;
+}
+.Cinvoiceinput-form{
+border: 1.5px solid #53B9EA;
+border-radius:8px!important;
+}
+.invoiceedisableBtn{
+    background-color:#c4c2c2!important;
+    outline: none;
+    border:none
+}
+.invoiceedisableBtm:hover{
+    background-color:#afaaaa!important;
+    
+}
+.Cinvoice-upload{
+    position: absolute;
+    opacity: -4;
+}

@@ -1,0 +1,117 @@
+.landing-main {
+  overflow: hidden;
+  height: 100vh;
+  background-color: #e5e5e5;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px;
+}
+.landing-title {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 49px;
+  letter-spacing: 0.4px;
+  color: #FF9933;
+}
+
+.landing-Form-main {
+  margin-top: 200px;
+  margin-left: 170px;
+  width: fit-content;
+}
+
+.landing-input-form {
+  border: none !important;
+  box-shadow: none !important;
+}
+.login-Form {
+  width: 22em;
+}
+.button-submit {
+  width: 100%;
+  background: #FF9933 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.button-submit:hover {
+  background: #ff9122 !important;
+}
+.forgot-password-form {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: right;
+  letter-spacing: 0.4px;
+  color: #FF9933;
+}
+.landing-grid2 {
+  float: right;
+  margin-left: 130px;
+  margin-top: 130px;
+  display: flex;
+  height: 400px;
+}
+.landing-image {
+  z-index: 2;
+  height: 100%;
+}
+.landing-item {
+  right: 0;
+  position: absolute;
+  z-index: 0;
+  height: 100vh;
+}
+@media screen and (max-width: 1100px) {
+  .landing-Form-main {
+    margin-left: 50px;
+  }
+  .landing-grid2 {
+    height: 350px;
+    margin-left: 5px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .landing-item {
+    display: none;
+  }
+}
+@media screen and (max-width: 769px) {
+  .landing-item {
+    display: none;
+  }
+  .landing-Form-main {
+    margin: 0px;
+  }
+  .landing-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 3px;
+    justify-items: center;
+    align-items: center;
+  }
+  .landing-grid2 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .navLogo {
+    height: 60px;
+    margin-top: 20px;
+  }
+  .navLogo-name {
+    font-size: 14px;
+    margin-top: 19px;
+    margin-left: -10px;
+  }
+  .navRegister {
+    right: 70px;
+    font-size: 13px;
+    margin-top: 15px;
+  }
+}

@@ -1,0 +1,53 @@
+.cdash1-text {
+  color: #9e9f9d;
+  font-size: 18px;
+}
+.Cdashboard-1 {
+  border: 1px solid #c2cbd2;
+  padding: 15px;
+}
+.Cdash1-current {
+  font-size: 15px;
+  font-weight: 600;
+  height: 40px;
+  display: grid;
+  justify-content: space-evenly;
+}
+.Cdash1-vertical-line {
+  height: 39px;
+  position: relative;
+  border-left: 1px solid gray;
+}
+.Cdashboard-2 {
+  border: 1px solid #c2cbd2;
+  padding: 15px;
+  display: flex;
+}
+.Cdashboard-3 {
+  border: 1px solid #c2cbd2;
+  padding: 10px;
+  height: 91%;
+}
+
+.card-Dash {
+  background: #fff5eb;
+
+  border-radius: 16px;
+  width: 300px;
+  height: 150px;
+}
+.card-Dash p {
+  color: #6a6a6a;
+}
+.card-Dash h2 {
+  color: #ff9933;
+}
+.date-calendar {
+  margin-right: 6em;
+  border: none;
+ 
+}
+.date-calendar:focus{
+
+  outline: none!important;
+}

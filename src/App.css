@@ -1,0 +1,33 @@
+
+.main-div {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.NavLink {
+  text-decoration: none !important;
+}
+
+/* Specific styles for active links */
+.NavLink-active a {
+  text-decoration: none !important;
+}
+.NavLink-active {
+  text-decoration: none !important;
+  color:  #FF9933;
+  background-color: #FF9933;
+  font-weight: 600;
+}
+.NavLink-active h2 {
+  color: #ffffff;
+  font-weight: 600;
+  background-color: #FF9933;
+  padding: 5px;
+  border-radius: 10px;
+}
+.NavLink-active span {
+  color: #ffffff;
+  font-weight: 600;
+}

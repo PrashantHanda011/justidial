@@ -1,0 +1,145 @@
+.clientsales-main {
+  /* margin-top: 1.5em; */
+  height: 100%;
+  width: 100%;
+  transition: 0.7s ease-in;
+border-radius: 20px;
+}
+.client-title {
+  font-family: "Nunito";
+  font-style: normal;
+  font-size: 20px;
+  color: #4c4c66;
+  padding: 20px;
+}
+.client-subtitle {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #6f6c99;
+  opacity: 0.7;
+}
+.notification-icon {
+  background: rgb(6, 40, 61);
+  mix-blend-mode: normal;
+  box-shadow: 0px 5px 34px rgba(18, 20, 75, 0.42);
+  border-radius: 17px;
+  width: 65px;
+  display: flex;
+  justify-content: space-around;
+  height: 30px;
+  padding: 5px;
+  margin-top: 20px;
+  
+}
+.client-sales-uploadD {
+  height: 100%;
+  margin-top: -10px;
+}
+.csales-upload-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 40px;
+  margin-left: -160px;
+  text-align: center;
+  color: #2d2d2d;
+}
+.csales-upload-subtext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  margin-left: -187px;
+  text-align: center;
+  color: #777777;
+}
+.csales-upload-section {
+  margin-top: -10px;
+  left: 23%;
+  width: 470px;
+  height: 270px;
+  position: relative;
+  border: 1px dashed #242424;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 25px;
+  text-align: -webkit-center;
+}
+.csales-upload-border-area {
+  display: content;
+  justify-content: center;
+  margin-left: 5px;
+}
+.csales-button-browse {
+  background: linear-gradient(93.99deg, #53b9ea 0%, #2594fb 103.31%);
+  border: 0px !important;
+  outline: 0px !important;
+  width: 11.5em;
+  padding: 5px;
+  margin-top: 15px;
+  padding-bottom: 9px;
+  font-weight: 600;
+  align-items: center;
+  height: 2.7em;
+  box-shadow: 0px 10px 35px -3px rgba(51, 93, 255, 0.35),
+    0px 4px 6px rgba(51, 93, 255, 0.25);
+  border-radius: 32px;
+  cursor: pointer;
+}
+.csales-button-browse:hover {
+  background: linear-gradient(93.99deg, #13b4ff 0%, #0084ff 103.31%);
+  box-shadow: 0px 10px 35px -3px rgba(51, 93, 255, 0.35),
+    0px 4px 6px rgba(51, 93, 255, 0.25);
+}
+.csales-button-browse:focus {
+  box-shadow: 0px 10px 35px -3px rgba(51, 93, 255, 0.35),
+    0px 4px 6px rgba(51, 93, 255, 0.25);
+  outline: 0 !important;
+}
+.csales-Generatetax {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  margin-left: -200px;
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #52596e;
+  margin-top: -7px;
+}
+.inputclient-file {
+  position: absolute;
+  top: 180px;
+  height: 47px;
+  width: 186px;
+  left: 31%;
+  opacity: -4;
+  cursor: pointer;
+}
+.inputclient-file-close-btn {
+  border-radius: 50%;
+  margin-left: 1rem;
+  height: 25px;
+  width: 25px;
+  padding: 0px;
+  font-size: 14px;
+}
+@media (max-width: 1450.9px) {
+  .csales-upload-section {
+    left: 21%;
+  }
+}
+@media (max-width: 1385.9px) {
+  .csales-upload-section {
+    left: 17%;
+  }
+}
+

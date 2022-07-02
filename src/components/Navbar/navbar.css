@@ -1,0 +1,60 @@
+.navbar-main {
+  position: absolute;
+  width: 100%;
+  height: 65px;
+  top: 0px;
+  background-color: #fff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display: flex;
+  align-items: center;
+  cursor: default;
+  z-index: 1;
+}
+.logo-main {
+  overflow: hidden;
+}
+.navLogo {
+  height: 80px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.navLogo-name {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: #FF9933;
+  letter-spacing: 0.4px;
+  margin-top: 15px;
+  margin-left: -10px;
+  cursor: pointer;
+}
+.navRegister {
+  right: 70px;
+  position: absolute;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: #FF9933;
+  margin-top: 15px;
+  align-content: center;
+  cursor: pointer;
+}
+.navRegisterLogo {
+  border-radius: 8px;
+  right: 35px;
+  position: absolute;
+  cursor: pointer;
+}
+.logout-main > span {
+  display: none;
+  margin-left: 5px;
+}
+
+.logout-main:hover > span {
+  display: inline;
+  }
+.logout-main> span:hover {
+  color: #f3a556
+}

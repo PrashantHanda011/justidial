@@ -4,7 +4,6 @@ import "react-bootstrap-drawer/lib/style.css";
 import { NavLink } from "react-router-dom";
 import { Drawer } from "react-bootstrap-drawer";
 import Logo from "../../assets/Logo.svg";
-import { BiLogOutCircle } from "react-icons/bi";
 import Collapseicon from "../../assets/Collapse.svg";
 import {
   AiFillHome,
@@ -37,7 +36,7 @@ const SideBar = () => {
             />{" "}
             Rent Out
           </Drawer.Header>
-          <hr style={{marginTop:"-2px"}} />
+          <hr style={{marginTop:"-11px"}} />
           <Drawer.Nav>
             <Drawer.Item className="hover">
               <NavLink
@@ -140,7 +139,7 @@ const SideBar = () => {
             </Drawer.Item>
             <Drawer.Item>
               <NavLink
-                to="/plan"
+                to="/feedback"
                 className={({ isActive }) =>
                   isActive ? "NavLink-active" : "NavLink"
                 }

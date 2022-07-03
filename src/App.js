@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Common import
@@ -9,6 +9,7 @@ import UserManage from "./components/UserManage/UserManage";
 import UserDetails from "./components/UserManage/UserDetails";
 import Revenue from "./components/Revenue/Revenue";
 import PlanManage from "./components/PlanManage/PlanManage";
+import Feedback from "./components/Feedback/Feedback";
 // Clientside
 
 // import ClientPurchases from "./components/Clientside/Purchase/Purchase";
@@ -63,36 +64,9 @@ function App() {
                 />
                 <Route exact path="/revenue" element={<Revenue />} />
                 <Route exact path="/plans" element={<PlanManage />} />
+                <Route exact path="/feedback" element={<Feedback />} />
                 {/* Clientside */}
 
-                {/* <Route exact path="/purchases" element={<ClientPurchases />} />
-                <Route exact path="/bank" element={<ClientBills />} />
-                <Route
-                  exact
-                  path="/sales/invoice"
-                  element={<ClientInvoice />}
-                />
-                <Route
-                  exact
-                  path="/sales/Editinvoice/:id"
-                  element={<ClientEditInvoice />}
-                />
-                <Route
-                  exact
-                  path="/workstatus"
-                  element={<ClientWorkStatus />}
-                />
-                <Route
-                  exact
-                  path="/subscription"
-                  element={<ClientSubscriptionCard />}
-                />
-                <Route
-                  exact
-                  path="/workstatus/details/:id"
-                  element={<ClientWorkDetails />}
-                />
-                <Route exact path="/chats" element={<ClientChat />} /> */}
               </Routes>
             </Col>
           </Row>

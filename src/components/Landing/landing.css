@@ -25,7 +25,7 @@
 }
 
 .landing-input-form {
-  border: none !important;
+  border: 1.5px solid #FF9933 !important;
   box-shadow: none !important;
 }
 .login-Form {

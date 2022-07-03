@@ -1,20 +1,23 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { UserContext } from "../../App";
 import "react-bootstrap-drawer/lib/style.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Drawer } from "react-bootstrap-drawer";
 import Logo from "../../assets/Logo.svg";
 import Collapseicon from "../../assets/Collapse.svg";
-import {
-  AiFillHome,
-  AiOutlineStock,
-  AiFillSnippets,
-} from "react-icons/ai";
+import Cookies from "js-cookie";
+import { AiFillHome, AiOutlineStock, AiFillSnippets } from "react-icons/ai";
 import "./sidebar.css";
 
 const SideBar = () => {
   const { show, setShow } = useContext(UserContext);
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!Cookies.get("Token")) {
+      navigate("/");
+      window.location.reload();
+    }
+  }, []);
   return (
     <Drawer
       className={show === false ? "sidebar-main" : "sidebar-main-collapse"}
@@ -24,11 +27,7 @@ const SideBar = () => {
       {/* <Collapse> */}
       <Drawer.Overflow>
         <Drawer.ToC style={{ overflow: "hidden" }}>
-          <Drawer.Header
-            href="/"
-            className="menu-item-header"
-            title="Rent Out"
-          >
+          <Drawer.Header href="/" className="menu-item-header" title="Rent Out">
             <img
               src={Logo}
               alt="Logo"
@@ -36,7 +35,7 @@ const SideBar = () => {
             />{" "}
             Rent Out
           </Drawer.Header>
-          <hr style={{marginTop:"-11px"}} />
+          <hr style={{ marginTop: "-11px" }} />
           <Drawer.Nav>
             <Drawer.Item className="hover">
               <NavLink
@@ -85,7 +84,7 @@ const SideBar = () => {
                   >
                     <AiOutlineStock size={24} />
                   </span>
-                  User 
+                  User
                 </h2>
               </NavLink>
             </Drawer.Item>
@@ -109,7 +108,7 @@ const SideBar = () => {
                   >
                     <AiOutlineStock size={24} />
                   </span>
-                  Revenue 
+                  Revenue
                 </h2>
               </NavLink>
             </Drawer.Item>

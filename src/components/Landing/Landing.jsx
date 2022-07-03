@@ -97,7 +97,7 @@ const Landing = () => {
               <p className="forgot-password-form">Forgot password?</p>
 
               <Button
-                className="button-submit"
+                className="button-submit btn-ripple"
                 type="submit"
                 onClick={(e) => handleSubmit(e)}
               >

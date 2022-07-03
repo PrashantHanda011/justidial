@@ -22,6 +22,10 @@ API.post(`/user/getAllUsers`,);
 export const FetchRevenue = () =>
 API.post(`/payment/getRevenues`,);
 
+export const FetchPlans = () =>
+API.get(`/payment/getPlans`,);
+
+
 
 
 

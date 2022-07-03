@@ -116,7 +116,7 @@ const SideBar = () => {
             </Drawer.Item>
             <Drawer.Item>
               <NavLink
-                to="/astrologermanage"
+                to="/plans"
                 className={({ isActive }) =>
                   isActive ? "NavLink-active" : "NavLink"
                 }
@@ -140,7 +140,7 @@ const SideBar = () => {
             </Drawer.Item>
             <Drawer.Item>
               <NavLink
-                to="/astrologermanage"
+                to="/plan"
                 className={({ isActive }) =>
                   isActive ? "NavLink-active" : "NavLink"
                 }

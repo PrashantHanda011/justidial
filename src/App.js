@@ -1,14 +1,14 @@
-import React, { createContext, useState,useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Common import
 import Landing from "../src/components/Landing/Landing";
-import Register from "../src/components/Register/Register";
 import SideBar from "./components/SideBar/SideBar";
- import ClientDashboard from "./components/Dashboard/Dashboard";
+import ClientDashboard from "./components/Dashboard/Dashboard";
 import UserManage from "./components/UserManage/UserManage";
 import UserDetails from "./components/UserManage/UserDetails";
 import Revenue from "./components/Revenue/Revenue";
+import PlanManage from "./components/PlanManage/PlanManage";
 // Clientside
 
 // import ClientPurchases from "./components/Clientside/Purchase/Purchase";
@@ -25,7 +25,6 @@ const UserContext = createContext();
 function App() {
   const [show, setShow] = useState(false);
 
- 
   return (
     <UserContext.Provider value={{ show: show, setShow: setShow }}>
       <div className="app-main">
@@ -54,15 +53,17 @@ function App() {
                 <Route path="/" element={<Landing />} />
                 <Route path="*" element={<Landing />} />
 
-                <Route path="/register" element={<Register />} />
                 {/* Clientside */}
                 <Route exact path="/dashboard" element={<ClientDashboard />} />
                 <Route exact path="/usermanage" element={<UserManage />} />
-                <Route exact path="/usermanage/details" element={<UserDetails />} />
+                <Route
+                  exact
+                  path="/usermanage/details"
+                  element={<UserDetails />}
+                />
                 <Route exact path="/revenue" element={<Revenue />} />
-               {/* Clientside */}
-              
-              
+                <Route exact path="/plans" element={<PlanManage />} />
+                {/* Clientside */}
 
                 {/* <Route exact path="/purchases" element={<ClientPurchases />} />
                 <Route exact path="/bank" element={<ClientBills />} />

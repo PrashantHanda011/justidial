@@ -27,6 +27,8 @@
 .landing-input-form {
   border: 1.5px solid #FF9933 !important;
   box-shadow: none !important;
+  color: #6a6a6a;
+  border-radius: 3px;
 }
 .login-Form {
   width: 22em;

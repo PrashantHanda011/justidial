@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { FetchGraph } from "../Axios/apis";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,6 +12,21 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 const LineChart = () => {
+  const [stats, setStats] = useState([]);
+
+  useEffect(() => {
+    const GetPlans = async () => {
+      try {
+        const { data } = await FetchGraph();
+        setStats(data?.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    GetPlans();
+  }, []);
+
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -37,7 +53,7 @@ const LineChart = () => {
         fill: false,
         borderColor: "#FF9933",
         backgroundColor: "#FF9933",
-        data: [10, 30, 70, 3, 20, 35,10,60,20],
+        data: stats,
         tension: 0.5,
       },
     ],

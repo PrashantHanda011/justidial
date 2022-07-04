@@ -50,7 +50,6 @@
   outline: none !important;
 }
 
-
 .search-main {
   margin-right: 5em;
   margin-top: 1.5rem;
@@ -58,12 +57,12 @@
 }
 .rsearch-bar {
   /* border-radius: 9px!important; */
-  border: 1.5px solid #ff9933!important;
-  color: #ff9933!important;
-  outline: none!important;
-  box-shadow: none!important;
-  border-left: 0!important;
-  transition: 0.1s ease-in-out!important;
+  border: 1.5px solid #ff9933 !important;
+  color: #ff9933 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-left: 0 !important;
+  transition: 0.1s ease-in-out !important;
 }
 .rsearch-bar::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -106,12 +105,12 @@
   background: #ff9933;
 }
 .rsearch-button-icon {
-  background-color: transparent!important;
-  border: 1.5px solid #ff9933!important;
+  background-color: transparent !important;
+  border: 1.5px solid #ff9933 !important;
   /* border-radius: 9px !important; */
-  margin-left: 10px!important;
+  margin-left: 10px !important;
   color: #ff9933 !important;
-  border-right: 0!important;
+  border-right: 0 !important;
 }
 .report-span-filter {
   margin-right: 6em;
@@ -128,9 +127,8 @@
 }
 .report-table-main {
   border: 0.5px solid #d3d3d3;
-  width: 95%!important;
+  width: 95% !important;
   margin-left: 1em;
-
 }
 
 .Rtable-header th {
@@ -247,4 +245,8 @@
   }
 }
 
-
+.filterDate {
+  margin-right: 5em;
+  font-size: 16px;
+  cursor: pointer;
+}

@@ -1,15 +1,20 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../App";
 import { FetchRevenue } from "../Axios/apis";
-import { Row } from "react-bootstrap";
+import { Row, Form, Button } from "react-bootstrap";
 import CommonHeader from "../Header/Header";
 import Cash from "../../assets/cash.png";
 import "./revenue.css";
+import { BsFillCalendarDateFill } from "react-icons/bs";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Line from "./LineChart";
 const Revenue = () => {
   const { show } = useContext(UserContext);
   const [revenue, setRevenue] = useState([]);
-
+  const [startDate, setStartDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [filter, setFilter] = useState(false);
   const GetRevenue = async () => {
     try {
       const { data } = await FetchRevenue();
@@ -18,6 +23,24 @@ const Revenue = () => {
       console.log(error);
     }
   };
+
+  const FilterUsers = async () => {
+    let NewData = { from: startDate, to: toDate };
+    try {
+      const { data } = await FetchRevenue(NewData);
+      setRevenue(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setFilter(false);
+  };
+  const Reset = () => {
+    GetRevenue();
+    setFilter(false);
+    setStartDate("");
+    setToDate("");
+  };
+
   useEffect(() => {
     GetRevenue();
   }, []);
@@ -50,12 +73,65 @@ const Revenue = () => {
                       </span>
                     </div>
                   </div>
-
-                  <div className="d-flex justify-content-end">
-                    <input type="date" className="date-calendar" />
+                  <div>
+                    <div className="d-flex justify-content-end mt-5">
+                      <h2
+                        className="filterDate"
+                        onClick={() =>
+                          filter ? setFilter(false) : setFilter(true)
+                        }
+                      >
+                        Filter Revenue{" "}
+                        <BsFillCalendarDateFill size="24" color="#000" />{" "}
+                      </h2>
+                    </div>
+                    {filter && (
+                      <div className="d-flex justify-content-end">
+                        <Form.Group>
+                          <Form.Label>From Date</Form.Label>
+                          <DatePicker
+                            selected={startDate}
+                            placeholderText="Please select from date"
+                            onChange={(date) => setStartDate(date)}
+                            className="landing-input-form "
+                            dateFormat="dd MMMM yyyy"
+                          />
+                        </Form.Group>
+                        <Form.Group>
+                          <Form.Label>To Date</Form.Label>
+                          <DatePicker
+                            selected={toDate}
+                            placeholderText="Please select to date"
+                            onChange={(date) => setToDate(date)}
+                            dateFormat="dd MMMM yyyy"
+                            className="landing-input-form "
+                          />
+                        </Form.Group>
+                        <br />
+                      </div>
+                    )}
+                    {startDate && toDate && filter && (
+                      <div className="d-flex justify-content-end mt-3 ">
+                        <Button
+                          className="button-submit btn-ripple "
+                          type="submit"
+                          onClick={FilterUsers}
+                          style={{ width: "6em", margin: "10px 0em" }}
+                        >
+                          Filter
+                        </Button>
+                        <Button
+                          className="button-submit btn-ripple"
+                          type="submit"
+                          onClick={Reset}
+                          style={{ width: "6em", margin: "10px 3em" }}
+                        >
+                          Reset
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 </div>
-
                 <h2 className="mt-5">Poster Plan</h2>
                 <div className="d-flex justify-content-between">
                   <div>

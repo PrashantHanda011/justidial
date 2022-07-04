@@ -2,20 +2,7 @@ import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 // import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
 
-const DashTable = ({ filter, user }) => {
-  const [input, setInput] = useState({
-    invoiceDate: "",
-    invoiceNo: "",
-    customerName: "",
-    amount: "",
-    invoiceStatus: "",
-    type: "",
-  });
-  const handleChange = (e) => {
-    const { name } = e.target;
-    setInput({ ...input, [name]: e.target.value });
-  };
-
+const DashTable = ({ user }) => {
   return (
     <>
       {user?.length !== 0 ? (
@@ -24,73 +11,13 @@ const DashTable = ({ filter, user }) => {
             <tr className="Rtable-header">
               <th>S.no</th>
 
-              <th>
-                User Name
-                <br />
-                <input
-                  type="text"
-                  value={input.invoiceNo}
-                  name="invoiceNo"
-                  onChange={handleChange}
-                  style={{ display: filter ? "" : "none" }}
-                />
-              </th>
-              <th>
-                E-mail
-                <br />
-                <input
-                  type="text"
-                  value={input.invoiceNo}
-                  name="invoiceNo"
-                  onChange={handleChange}
-                  style={{ display: filter ? "" : "none" }}
-                />
-              </th>
-              <th>
-                Contact
-                <br />
-                <input
-                  type="text"
-                  value={input.invoiceNo}
-                  name="invoiceNo"
-                  onChange={handleChange}
-                  style={{ display: filter ? "" : "none" }}
-                />
-              </th>
-              <th>
-                Location
-                <br />
-                <input
-                  type="text"
-                  name="invoiceStatus"
-                  value={input.invoiceStatus}
-                  onChange={handleChange}
-                  style={{ display: filter ? "" : "none", width: "7em" }}
-                />
-              </th>
-              <th>
-                Plan
-                <br />
-                <input
-                  type="text"
-                  value={input.customerName}
-                  name="customerName"
-                  onChange={handleChange}
-                  style={{ display: filter ? "" : "none" }}
-                />
-              </th>
+              <th>User Name</th>
+              <th>E-mail</th>
+              <th>Contact</th>
+              <th>Location</th>
+              <th>Plan</th>
 
-              <th>
-                Action
-                <br />
-                <input
-                  type="text"
-                  name="invoiceStatus"
-                  value={input.invoiceStatus}
-                  onChange={handleChange}
-                  style={{ display: filter ? "" : "none", width: "7em" }}
-                />
-              </th>
+              <th>Action</th>
             </tr>
           </thead>
           {user?.map((data, id) => {
@@ -122,12 +49,7 @@ const DashTable = ({ filter, user }) => {
           })}
         </Table>
       ) : (
-        <div style={{ margin: "6em" }}>
-          <div className="loading-main">
-            <div className="loader"></div>
-          </div>
-          <h5>Loading...</h5>
-        </div>
+        <h2 className="text-center">No User Data To Display</h2>
       )}
 
       {/* <div style={{ display: "flex", justifyContent: "space-between" }}>

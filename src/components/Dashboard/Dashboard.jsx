@@ -1,24 +1,28 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../App";
 import "./dashboard.css";
-import { DashUsers } from "../Axios/apis";
-import Cookies from "js-cookie";
-import { Row, Form, InputGroup } from "react-bootstrap";
+import { DashUsers, FetchSearch } from "../Axios/apis";
+import { Row, Form, InputGroup, Button } from "react-bootstrap";
 import CommonHeader from "../Header/Header";
-import { BsSearch } from "react-icons/bs";
+import { BsSearch, BsFillCalendarDateFill } from "react-icons/bs";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 import TableData from "./Table";
 
 const ClientDashboard = () => {
   const { show } = useContext(UserContext);
   const [filter, setFilter] = useState(false);
-  const [page, setPage] = useState(1);
   const [user, setUser] = useState([]);
-  let id = Cookies.get("Token");
+  const [startDate, setStartDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [search, setSearch] = useState("");
+  const [searchData, setSearchData] = useState([]);
 
   const FetchUsers = async () => {
     try {
-      const { data } = await DashUsers(id);
+      const { data } = await DashUsers();
       setUser(data.data);
     } catch (error) {
       console.log(error);
@@ -28,7 +32,35 @@ const ClientDashboard = () => {
     FetchUsers();
   }, []);
 
-  console.log(user);
+  const FilterUsers = async () => {
+    let NewData = { from: startDate, to: toDate };
+    try {
+      const { data } = await DashUsers(NewData);
+      setUser(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setFilter(false);
+  };
+  const Reset = () => {
+    FetchUsers();
+    setFilter(false);
+    setStartDate("");
+    setToDate("");
+  };
+  useEffect(() => {
+    const SearchUser = async () => {
+      let NewData = { name: search };
+      try {
+        const { data } = await FetchSearch(NewData);
+        setSearchData(data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    SearchUser();
+  }, [search]);
+  let result =search?.length===0?user?.users:searchData
   return (
     <>
       <div className="main-div">
@@ -61,27 +93,77 @@ const ClientDashboard = () => {
                         className="rsearch-bar"
                         type="text"
                         placeholder="Search"
+                        value={search}
+                        onChange={(e) => setSearch(e?.target?.value)}
                       />
                     </InputGroup>
                   </Form>
                 </div>
                 <div className="d-flex justify-content-end">
-                  <input type="date" className="date-calendar" />
+                  <h2
+                    className="filterDate"
+                    onClick={() =>
+                      filter ? setFilter(false) : setFilter(true)
+                    }
+                  >
+                    Filter Users{" "}
+                    <BsFillCalendarDateFill size="24" color="#000" />{" "}
+                  </h2>
                 </div>
+                {filter && (
+                  <div className="d-flex justify-content-end">
+                    <Form.Group>
+                      <Form.Label>From Date</Form.Label>
+                      <DatePicker
+                        selected={startDate}
+                        placeholderText="Please select from date"
+                        onChange={(date) => setStartDate(date)}
+                        className="landing-input-form "
+                        dateFormat="dd MMMM yyyy"
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>To Date</Form.Label>
+                      <DatePicker
+                        selected={toDate}
+                        placeholderText="Please select to date"
+                        onChange={(date) => setToDate(date)}
+                        dateFormat="dd MMMM yyyy"
+                        className="landing-input-form "
+                      />
+                    </Form.Group>
+                    <br />
+                  </div>
+                )}
+                {startDate && toDate && filter && (
+                  <div className="d-flex justify-content-end mt-3 ">
+                    <Button
+                      className="button-submit btn-ripple "
+                      type="submit"
+                      onClick={FilterUsers}
+                      style={{ width: "6em", margin: "10px 0em" }}
+                    >
+                      Filter
+                    </Button>
+                    <Button
+                      className="button-submit btn-ripple"
+                      type="submit"
+                      onClick={Reset}
+                      style={{ width: "6em", margin: "10px 3em" }}
+                    >
+                      Reset
+                    </Button>
+                  </div>
+                )}
                 <Row style={{ marginTop: "20px" }}>
-                  <TableData
-                    filter={filter}
-                    setPage={setPage}
-                    user={user?.users}
-                  />
+                  <TableData user={result} />
                 </Row>
               </>
             ) : (
               <div className="d-flex justify-content-center mt-5">
                 <div className="loading-main ">
-                  <div className="loader"/>
+                  <div className="loader" />
                 </div>
-              
               </div>
             )}
           </Row>

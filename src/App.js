@@ -10,16 +10,7 @@ import UserDetails from "./components/UserManage/UserDetails";
 import Revenue from "./components/Revenue/Revenue";
 import PlanManage from "./components/PlanManage/PlanManage";
 import Feedback from "./components/Feedback/Feedback";
-// Clientside
 
-// import ClientPurchases from "./components/Clientside/Purchase/Purchase";
-// import ClientBills from "./components/Clientside/Bills/Bills";
-// import ClientInvoice from "./components/Clientside/Bills/Invoice";
-// import ClientEditInvoice from "./components/Clientside/Bills/EditInvoice";
-// import ClientWorkStatus from "./components/Clientside/WorkStatus/WorkStatus";
-// import ClientSubscriptionCard from "./components/Clientside/SubscriptionCard/SubscriptionCard";
-// import ClientWorkDetails from "./components/Clientside/WorkStatus/WorkDetails";
-// import ClientChat from "./components/Clientside/Chats/Chat";
 
 import { Col, Row } from "react-bootstrap";
 const UserContext = createContext();
@@ -59,7 +50,7 @@ function App() {
                 <Route exact path="/usermanage" element={<UserManage />} />
                 <Route
                   exact
-                  path="/usermanage/details"
+                  path="/usermanage/:id"
                   element={<UserDetails />}
                 />
                 <Route exact path="/revenue" element={<Revenue />} />

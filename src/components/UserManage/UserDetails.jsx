@@ -1,13 +1,32 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../App";
-import UserDetailTable from "./UserDetailTable";
-import { Col, Row,Form, InputGroup } from "react-bootstrap";
-import Filtericon from "../../assets/filter.svg";
-import { BsSearch } from "react-icons/bs";
+import { FetchPlans, UserAd } from "../Axios/apis";
+import { Row, Button, Modal, Form } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 import CommonHeader from "../Header/Header";
-
 const UserDetails = () => {
+  const id=useParams()
   const { show } = useContext(UserContext);
+  const [plans, setPlans] = useState([]);
+console.log(id)
+
+ 
+  const GetAd = async () => {
+    let NewData=  {userId: id.id}
+    try {
+      const { data } = await UserAd(NewData);
+      setPlans(data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+console.log(plans)
+  
+  useEffect(() => {
+    GetAd();
+  }, []);
+
   return (
     <>
       <div className="main-div">
@@ -17,67 +36,54 @@ const UserDetails = () => {
         >
           <Row>
             <CommonHeader />
-            <div style={{ display: "grid", marginBottom: "2em" }}>
-              <h3>Rohit Sharma</h3>
-            </div>
+            {plans?.length !== 0 ? (
+              <>
+                <div>
+                  <h2 className="title"> Plans Management</h2>
+                </div>
 
-            <div className="report-grid-main ">
-              <div
-                className={
-                  show ? "report-search-item" : "report-search-item-collapse"
-                }
-              >
-                <Form>
-                  <InputGroup className="mb-3">
-                    <InputGroup.Text className="rsearch-button-icon">
-                      <BsSearch size={20} />
-                    </InputGroup.Text>
-                    <Form.Control
-                      className="rsearch-bar"
-                      type="text"
-                      placeholder="Search. Customer name, Type, Phone No"
-                    />
-                  </InputGroup>
-                </Form>
-              </div>
-              <div
-                className={
-                  show
-                    ? "report-top-right-button"
-                    : "report-top-right-button-collapse"
-                }
-              >
-                <span style={{ display: "flex" }}>
-                  <Form.Control
-                    className="rsearch-bar"
-                    type="date"
-                    value="2022-06-25"
-                    style={{
-                      marginRight: "8em",
-                      width: "10em",
-                      borderLeft: "1.5px solid",
-                    }}
-                  />
+                <h2 className="mt-3">Poster Plan</h2>
+                <div className="d-flex justify-content-between">
+                  {plans?.slice(0, 4)?.map((data, id) => (
+                    <div className="card-plan mt-3" key={id}>
+                      <h6>{data?.name} Plan User</h6>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam.
+                      </p>
 
-                  {/* <Button className="report-button">
-                          <AiFillPrinter size={25} /> Print
-                        </Button> */}
-                  <span className="report-span-filter">
-                    <img src={Filtericon} alt="Filter" />
-                    Filter
-                  </span>
-                </span>
+                      <Button
+                        className="button-submit btn-ripple"
+                        type="submit"
+                        style={{ fontSize: "20px", fontWeight: "600" }}
+                      >
+                        Rs. {data?.price}
+                      </Button>
+
+                      <h2
+                        style={{ cursor: "pointer" }}
+                       
+                      >
+                        Change plan
+                      </h2>
+                    </div>
+                  ))}
+                </div>
+
+             
+              </>
+            ) : (
+              <div className="d-flex justify-content-center mt-5">
+                <div className="loading-main ">
+                  <div className="loader" />
+                </div>
               </div>
-            </div>
-            <Row style={{ marginTop: "20px" }}>
-              <Col>
-                <h2 className="cdash1-text">Total Spending: 9000 INR</h2>
-                <UserDetailTable page={1} total={12} />
-              </Col>
-            </Row>
+            )}
           </Row>
         </div>
       </div>
+    
     </>
   );
 };

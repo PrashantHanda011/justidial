@@ -48,7 +48,7 @@ const Feedback = () => {
                         magna aliqua. Ut enim ad minim veniam.
                       </p>
 
-                      <h2>Reply</h2>
+                      <h2><b>E-mail:</b> rohit23@gmail.com<br/><br/><b>Contact:</b> +91 786 5347 894</h2>
                     </div>
                   ))}
                 </div>

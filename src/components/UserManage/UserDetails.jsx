@@ -1,18 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../App";
-import { FetchPlans, UserAd } from "../Axios/apis";
-import { Row, Button, Modal, Form } from "react-bootstrap";
+import {UserAd } from "../Axios/apis";
+import { Row} from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import CommonHeader from "../Header/Header";
+import AD from "../../assets/adsimage.png"
 const UserDetails = () => {
-  const id=useParams()
+  const id = useParams();
   const { show } = useContext(UserContext);
   const [plans, setPlans] = useState([]);
-console.log(id)
+  console.log(id);
 
- 
   const GetAd = async () => {
-    let NewData=  {userId: id.id}
+    let NewData = { userId: id.id };
     try {
       const { data } = await UserAd(NewData);
       setPlans(data?.data);
@@ -21,12 +21,12 @@ console.log(id)
     }
   };
 
-console.log(plans)
-  
+  console.log(plans);
+
   useEffect(() => {
     GetAd();
   }, []);
-
+console.log(plans)
   return (
     <>
       <div className="main-div">
@@ -39,51 +39,36 @@ console.log(plans)
             {plans?.length !== 0 ? (
               <>
                 <div>
-                  <h2 className="title"> Plans Management</h2>
+                  <h2 className="title"> {plans[0]?.listedBy}</h2>
                 </div>
 
-                <h2 className="mt-3">Poster Plan</h2>
+                <h2 className="mt-3">All Property</h2>
                 <div className="d-flex justify-content-between">
-                  {plans?.slice(0, 4)?.map((data, id) => (
+                  {plans?.map((data, id) => (
                     <div className="card-plan mt-3" key={id}>
-                      <h6>{data?.name} Plan User</h6>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam.
-                      </p>
+                      <div>
+                        <img src={AD} alt="default"/>
+                      </div>
+                      <h6>{data?.title}</h6>
+                      <p>{data?.description}</p>
 
-                      <Button
-                        className="button-submit btn-ripple"
-                        type="submit"
-                        style={{ fontSize: "20px", fontWeight: "600" }}
-                      >
-                        Rs. {data?.price}
-                      </Button>
+                      <h6 style={{ fontSize: "15px" }} >
+                        {data?.address?.state},{data?.address?.country}
+                      </h6>
 
-                      <h2
-                        style={{ cursor: "pointer" }}
-                       
-                      >
-                        Change plan
+                      <h2 style={{ cursor: "pointer" }}>
+                        {data?.price}/Month
                       </h2>
                     </div>
                   ))}
                 </div>
-
-             
               </>
             ) : (
-              <div className="d-flex justify-content-center mt-5">
-                <div className="loading-main ">
-                  <div className="loader" />
-                </div>
-              </div>
+             <h2 className="text-center">No Ads To Display....</h2>
             )}
           </Row>
         </div>
       </div>
-    
     </>
   );
 };

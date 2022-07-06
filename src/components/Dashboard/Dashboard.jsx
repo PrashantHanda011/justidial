@@ -6,9 +6,7 @@ import { Row, Form, InputGroup, Button } from "react-bootstrap";
 import CommonHeader from "../Header/Header";
 import { BsSearch, BsFillCalendarDateFill } from "react-icons/bs";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
-
 import TableData from "./Table";
 
 const ClientDashboard = () => {
@@ -31,7 +29,33 @@ const ClientDashboard = () => {
   useEffect(() => {
     FetchUsers();
   }, []);
+  const FilterSeven = async () => {
+    let currentdate = new Date();
+    let lastSeven = new Date();
+    lastSeven.setDate(lastSeven.getDate() - 13);
+    let NewData = { from: lastSeven, to: currentdate };
+    try {
+      const { data } = await DashUsers(NewData);
+      setUser(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setFilter(false);
+  };
 
+  const FilterLastDay = async () => {
+    let currentdate = new Date();
+    let lastSeven = new Date();
+    lastSeven.setDate(lastSeven.getDate() - 1);
+    let NewData = { from: lastSeven, to: currentdate };
+    try {
+      const { data } = await DashUsers(NewData);
+      setUser(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setFilter(false);
+  };
   const FilterUsers = async () => {
     let NewData = { from: startDate, to: toDate };
     try {
@@ -60,7 +84,7 @@ const ClientDashboard = () => {
     };
     SearchUser();
   }, [search]);
-  let result =search?.length===0?user?.users:searchData
+  let result = search?.length === 0 ? user?.users : searchData;
   return (
     <>
       <div className="main-div">
@@ -99,7 +123,7 @@ const ClientDashboard = () => {
                     </InputGroup>
                   </Form>
                 </div>
-                <div className="d-flex justify-content-end">
+                <div className="d-flex justify-content-end ">
                   <h2
                     className="filterDate"
                     onClick={() =>
@@ -111,7 +135,7 @@ const ClientDashboard = () => {
                   </h2>
                 </div>
                 {filter && (
-                  <div className="d-flex justify-content-end">
+                  <div className="d-flex justify-content-start">
                     <Form.Group>
                       <Form.Label>From Date</Form.Label>
                       <DatePicker
@@ -132,26 +156,58 @@ const ClientDashboard = () => {
                         className="landing-input-form "
                       />
                     </Form.Group>
+                    <Form.Group style={{ marginRight: "4em" }}>
+                      <Form.Label>Last 7 days</Form.Label>
+                      <div>
+                        <Button
+                          className="button-submit btn-ripple "
+                          type="submit"
+                          onClick={FilterSeven}
+                          style={{ width: "8em" }}
+                        >
+                          Filter Users
+                        </Button>
+                      </div>
+                    </Form.Group>
+                    <Form.Group style={{ marginRight: "4em" }}>
+                      <Form.Label>Last 24 hours</Form.Label>
+                      <div>
+                        <Button
+                          className="button-submit btn-ripple "
+                          type="submit"
+                          onClick={FilterLastDay}
+                          style={{ width: "8em" }}
+                        >
+                          Filter Users
+                        </Button>
+                      </div>
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>Reset</Form.Label>
+                      <div>
+                        <Button
+                          className="button-submit btn-ripple"
+                          type="submit"
+                          onClick={Reset}
+                          style={{ width: "8em" }}
+                        >
+                          Reset Filter
+                        </Button>
+                      </div>
+                    </Form.Group>
+
                     <br />
                   </div>
                 )}
                 {startDate && toDate && filter && (
-                  <div className="d-flex justify-content-end mt-3 ">
+                  <div className="d-flex justify-content-start mt-3 ">
                     <Button
                       className="button-submit btn-ripple "
                       type="submit"
                       onClick={FilterUsers}
-                      style={{ width: "6em", margin: "10px 0em" }}
+                      style={{ width: "7em", margin: "10px 0em" }}
                     >
-                      Filter
-                    </Button>
-                    <Button
-                      className="button-submit btn-ripple"
-                      type="submit"
-                      onClick={Reset}
-                      style={{ width: "6em", margin: "10px 3em" }}
-                    >
-                      Reset
+                      Filter Date
                     </Button>
                   </div>
                 )}

@@ -25,9 +25,25 @@ const Landing = () => {
     if (formData.email && formData.password) {
       try {
         const { data } = await Signin(formData);
-        Cookies.set("Token", data?.data);
-        navigate("/dashboard");
-        window.location.reload();
+        Cookies.set("RentOutToken", data?.data?.token);
+        console.log(data.data.user);
+
+        localStorage.setItem("user", JSON.stringify(data?.data?.user));
+        const user = data?.data?.user;
+        user?.dashboard
+          ? navigate("/dashboard")
+          : user?.users
+          ? navigate("/usermanage")
+          : user?.revenue
+          ? navigate("/revenue")
+          : user?.feedback
+          ? navigate("/feedback")
+          : user?.plans
+          ? navigate("/plans")
+          : user?.isSubadmin
+          ? navigate("/subadmin")
+          : navigate("/");
+         window.location.reload();
       } catch (error) {
         console.log(error);
         alert("Invalid Email or Password");
@@ -40,7 +56,7 @@ const Landing = () => {
   };
 
   useEffect(() => {
-    if (Cookies.get("Token")) {
+    if (Cookies.get("RentOutToken")) {
       navigate("/dashboard");
       window.location.reload();
     }

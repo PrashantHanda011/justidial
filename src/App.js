@@ -10,8 +10,9 @@ import UserDetails from "./components/UserManage/UserDetails";
 import Revenue from "./components/Revenue/Revenue";
 import PlanManage from "./components/PlanManage/PlanManage";
 import Feedback from "./components/Feedback/Feedback";
-
-
+import SubAdmin from "./components/SubAdmin/SubAdmin";
+import Addsub from "./components/SubAdmin/Addsub";
+import Editsub from "./components/SubAdmin/Editsub";
 import { Col, Row } from "react-bootstrap";
 const UserContext = createContext();
 function App() {
@@ -56,6 +57,9 @@ function App() {
                 <Route exact path="/revenue" element={<Revenue />} />
                 <Route exact path="/plans" element={<PlanManage />} />
                 <Route exact path="/feedback" element={<Feedback />} />
+                <Route exact path="/subadmin" element={<SubAdmin />} /> 
+                <Route exact path="/subadmin/add" element={<Addsub />} /> 
+                <Route exact path="/subadmin/edit/:id" element={<Editsub />} /> 
                 {/* Clientside */}
 
               </Routes>

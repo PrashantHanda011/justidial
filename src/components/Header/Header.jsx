@@ -7,11 +7,12 @@ import { BiLogOutCircle } from "react-icons/bi";
 const CommonHeader = () => {
   const navigate = useNavigate();
 const logout =()=>{
-  Cookies.remove('Token')
+  Cookies.remove('RentOutToken')
+  localStorage.clear();
   window.location.reload(); 
 }
   useEffect(() => {
-    if (!Cookies.get("Token")) {
+    if (!Cookies.get("RentOutToken")) {
       navigate("/");
       window.location.reload();
     }

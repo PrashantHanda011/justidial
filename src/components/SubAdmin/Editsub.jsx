@@ -76,7 +76,6 @@ const EditSub = () => {
       });
     }
   }, [state]);
-  console.log(check);
   return (
     <>
       <div className="main-div">

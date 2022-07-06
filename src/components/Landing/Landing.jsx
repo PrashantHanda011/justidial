@@ -26,8 +26,6 @@ const Landing = () => {
       try {
         const { data } = await Signin(formData);
         Cookies.set("RentOutToken", data?.data?.token);
-        console.log(data.data.user);
-
         localStorage.setItem("user", JSON.stringify(data?.data?.user));
         const user = data?.data?.user;
         user?.dashboard
@@ -43,7 +41,7 @@ const Landing = () => {
           : user?.isSubadmin
           ? navigate("/subadmin")
           : navigate("/");
-         window.location.reload();
+        window.location.reload();
       } catch (error) {
         console.log(error);
         alert("Invalid Email or Password");

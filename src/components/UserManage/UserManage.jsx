@@ -25,11 +25,10 @@ const UsersManage = () => {
       console.log(error);
     }
   };
- 
+
   useEffect(() => {
     FetchUsers();
   }, []);
-
 
   const FilterUsers = async () => {
     let NewData = { from: startDate, to: toDate };
@@ -60,7 +59,6 @@ const UsersManage = () => {
     SearchUser();
   }, [search]);
   let result = search?.length === 0 ? user?.data : searchData;
-  console.log(result);
   return (
     <>
       <div className="main-div">

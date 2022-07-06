@@ -46,7 +46,6 @@ const SubAdd = () => {
       };
       try {
         const { data } = await AddsubAdmin(formData);
-        console.log(data);
         alert(data.message);
         navigate("/subadmin");
       } catch (error) {
@@ -56,9 +55,6 @@ const SubAdd = () => {
       alert("Fields cannot be empty");
     }
   };
-
-  console.log(input);
-  console.log(check);
   return (
     <>
       <div className="main-div">
@@ -71,7 +67,7 @@ const SubAdd = () => {
 
             <h2 className="title mt-4 mb-5">Add Sub-Admin </h2>
 
-            <Form >
+            <Form>
               <Row className="mb-3">
                 <Form.Group as={Col} md="5">
                   <Form.Label>Name</Form.Label>

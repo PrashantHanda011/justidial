@@ -17,7 +17,8 @@ import { Col, Row } from "react-bootstrap";
 const UserContext = createContext();
 function App() {
   const [show, setShow] = useState(false);
-
+  let u = localStorage.getItem("user");
+  let user = JSON.parse(u);
   return (
     <UserContext.Provider value={{ show: show, setShow: setShow }}>
       <div className="app-main">
@@ -47,21 +48,54 @@ function App() {
                 <Route path="*" element={<Landing />} />
 
                 {/* Clientside */}
-                <Route exact path="/dashboard" element={<ClientDashboard />} />
-                <Route exact path="/usermanage" element={<UserManage />} />
+
+                <Route
+                  exact
+                  path="/dashboard"
+                  element={user?.dashboard && <ClientDashboard />}
+                />
+
+                <Route
+                  exact
+                  path="/usermanage"
+                  element={user?.users && <UserManage />}
+                />
                 <Route
                   exact
                   path="/usermanage/:id"
-                  element={<UserDetails />}
+                  element={user?.users && <UserDetails />}
                 />
-                <Route exact path="/revenue" element={<Revenue />} />
-                <Route exact path="/plans" element={<PlanManage />} />
-                <Route exact path="/feedback" element={<Feedback />} />
-                <Route exact path="/subadmin" element={<SubAdmin />} /> 
-                <Route exact path="/subadmin/add" element={<Addsub />} /> 
-                <Route exact path="/subadmin/edit/:id" element={<Editsub />} /> 
+                <Route
+                  exact
+                  path="/revenue"
+                  element={user?.revenue && <Revenue />}
+                />
+                <Route
+                  exact
+                  path="/plans"
+                  element={user?.plans && <PlanManage />}
+                />
+                <Route
+                  exact
+                  path="/feedback"
+                  element={user?.feedback && <Feedback />}
+                />
+                <Route
+                  exact
+                  path="/subadmin"
+                  element={user?.isSubadmin && <SubAdmin />}
+                />
+                <Route
+                  exact
+                  path="/subadmin/add"
+                  element={user?.isSubadmin && <Addsub />}
+                />
+                <Route
+                  exact
+                  path="/subadmin/edit/:id"
+                  element={user?.isSubadmin && <Editsub />}
+                />
                 {/* Clientside */}
-
               </Routes>
             </Col>
           </Row>

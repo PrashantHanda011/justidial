@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../App";
-import {UserAd } from "../Axios/apis";
-import { Row} from "react-bootstrap";
+import { UserAd } from "../Axios/apis";
+import { Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import CommonHeader from "../Header/Header";
-import AD from "../../assets/adsimage.png"
+import AD from "../../assets/adsimage.png";
 const UserDetails = () => {
   const id = useParams();
   const { show } = useContext(UserContext);
@@ -21,12 +21,10 @@ const UserDetails = () => {
     }
   };
 
-  console.log(plans);
-
   useEffect(() => {
     GetAd();
   }, []);
-console.log(plans)
+
   return (
     <>
       <div className="main-div">
@@ -47,24 +45,22 @@ console.log(plans)
                   {plans?.map((data, id) => (
                     <div className="card-plan mt-3" key={id}>
                       <div>
-                        <img src={AD} alt="default"/>
+                        <img src={AD} alt="default" />
                       </div>
                       <h6>{data?.title}</h6>
                       <p>{data?.description}</p>
 
-                      <h6 style={{ fontSize: "15px" }} >
+                      <h6 style={{ fontSize: "15px" }}>
                         {data?.address?.state},{data?.address?.country}
                       </h6>
 
-                      <h2 style={{ cursor: "pointer" }}>
-                        {data?.price}/Month
-                      </h2>
+                      <h2 style={{ cursor: "pointer" }}>{data?.price}/Month</h2>
                     </div>
                   ))}
                 </div>
               </>
             ) : (
-             <h2 className="text-center">No Ads To Display....</h2>
+              <h2 className="text-center">No Ads To Display....</h2>
             )}
           </Row>
         </div>

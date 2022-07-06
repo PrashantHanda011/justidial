@@ -19,7 +19,6 @@ const Feedback = () => {
     GetPlans();
   }, []);
 
-  console.log(plans);
   return (
     <>
       <div className="main-div">

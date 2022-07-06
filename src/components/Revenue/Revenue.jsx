@@ -44,8 +44,6 @@ const Revenue = () => {
   useEffect(() => {
     GetRevenue();
   }, []);
-
-  console.log(revenue);
   return (
     <>
       <div className="main-div">

@@ -56,10 +56,8 @@ const Revenue = () => {
             {revenue?.length !== 0 ? (
               <>
                 <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
+                  className="d-flex justify-content-between"
+                  style={{ gap: "10px" }}
                 >
                   <div>
                     <h2 className="title"> Revenue</h2>

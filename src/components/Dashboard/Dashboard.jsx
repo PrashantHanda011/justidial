@@ -29,11 +29,14 @@ const ClientDashboard = () => {
   useEffect(() => {
     FetchUsers();
   }, []);
-  const FilterSeven = async () => {
-    let currentdate = new Date();
-    let lastSeven = new Date();
-    lastSeven.setDate(lastSeven.getDate() - 13);
-    let NewData = { from: lastSeven, to: currentdate };
+
+  let currentdate = new Date();
+  let lastSevenDay = new Date();
+  lastSevenDay.setDate(lastSevenDay.getDate() - 13);
+  let lastOneDay = new Date();
+  lastOneDay.setDate(lastOneDay.getDate() - 1);
+  const FilterUsers = async (a, b) => {
+    let NewData = { from: a, to: b };
     try {
       const { data } = await DashUsers(NewData);
       setUser(data.data);
@@ -43,29 +46,6 @@ const ClientDashboard = () => {
     setFilter(false);
   };
 
-  const FilterLastDay = async () => {
-    let currentdate = new Date();
-    let lastSeven = new Date();
-    lastSeven.setDate(lastSeven.getDate() - 1);
-    let NewData = { from: lastSeven, to: currentdate };
-    try {
-      const { data } = await DashUsers(NewData);
-      setUser(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-    setFilter(false);
-  };
-  const FilterUsers = async () => {
-    let NewData = { from: startDate, to: toDate };
-    try {
-      const { data } = await DashUsers(NewData);
-      setUser(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-    setFilter(false);
-  };
   const Reset = () => {
     FetchUsers();
     setFilter(false);
@@ -162,7 +142,7 @@ const ClientDashboard = () => {
                         <Button
                           className="button-submit btn-ripple "
                           type="submit"
-                          onClick={FilterSeven}
+                          onClick={() => FilterUsers(lastSevenDay, currentdate)}
                           style={{ width: "8em" }}
                         >
                           Filter Users
@@ -175,7 +155,7 @@ const ClientDashboard = () => {
                         <Button
                           className="button-submit btn-ripple "
                           type="submit"
-                          onClick={FilterLastDay}
+                          onClick={() => FilterUsers(lastOneDay, currentdate)}
                           style={{ width: "8em" }}
                         >
                           Filter Users
@@ -204,7 +184,7 @@ const ClientDashboard = () => {
                     <Button
                       className="button-submit btn-ripple "
                       type="submit"
-                      onClick={FilterUsers}
+                      onClick={() => FilterUsers(startDate, toDate)}
                       style={{ width: "7em", margin: "10px 0em" }}
                     >
                       Filter Date

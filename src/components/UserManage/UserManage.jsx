@@ -7,7 +7,6 @@ import { BsSearch, BsFillCalendarDateFill } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TableData from "./Table";
-import { Navigate } from "react-router-dom";
 
 const UsersManage = () => {
   const { show } = useContext(UserContext);
@@ -29,9 +28,13 @@ const UsersManage = () => {
   useEffect(() => {
     FetchUsers();
   }, []);
-
-  const FilterUsers = async () => {
-    let NewData = { from: startDate, to: toDate };
+  let currentdate = new Date();
+  let lastSevenDay = new Date();
+  lastSevenDay.setDate(lastSevenDay.getDate() - 13);
+  let lastOneDay = new Date();
+  lastOneDay.setDate(lastOneDay.getDate() - 1);
+  const FilterUsers = async (a,b) => {
+    let NewData = { from: a, to: b };
     try {
       const { data } = await AllUsers(NewData);
       setUser(data);
@@ -100,7 +103,7 @@ const UsersManage = () => {
             {user?.length !== 0 ? (
               <>
                 {" "}
-                <div className="d-flex justify-content-end">
+                <div className="d-flex justify-content-end ">
                   <h2
                     className="filterDate"
                     onClick={() =>
@@ -112,7 +115,7 @@ const UsersManage = () => {
                   </h2>
                 </div>
                 {filter && (
-                  <div className="d-flex justify-content-end">
+                  <div className="d-flex justify-content-start">
                     <Form.Group>
                       <Form.Label>From Date</Form.Label>
                       <DatePicker
@@ -133,26 +136,58 @@ const UsersManage = () => {
                         className="landing-input-form "
                       />
                     </Form.Group>
+                    <Form.Group style={{ marginRight: "4em" }}>
+                      <Form.Label>Last 7 days</Form.Label>
+                      <div>
+                        <Button
+                          className="button-submit btn-ripple "
+                          type="submit"
+                          onClick={() => FilterUsers(lastSevenDay, currentdate)}
+                          style={{ width: "8em" }}
+                        >
+                          Filter Users
+                        </Button>
+                      </div>
+                    </Form.Group>
+                    <Form.Group style={{ marginRight: "4em" }}>
+                      <Form.Label>Last 24 hours</Form.Label>
+                      <div>
+                        <Button
+                          className="button-submit btn-ripple "
+                          type="submit"
+                          onClick={() => FilterUsers(lastOneDay, currentdate)}
+                          style={{ width: "8em" }}
+                        >
+                          Filter Users
+                        </Button>
+                      </div>
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>Reset</Form.Label>
+                      <div>
+                        <Button
+                          className="button-submit btn-ripple"
+                          type="submit"
+                          onClick={Reset}
+                          style={{ width: "8em" }}
+                        >
+                          Reset Filter
+                        </Button>
+                      </div>
+                    </Form.Group>
+
                     <br />
                   </div>
                 )}
                 {startDate && toDate && filter && (
-                  <div className="d-flex justify-content-end mt-3 ">
+                  <div className="d-flex justify-content-start mt-3 ">
                     <Button
                       className="button-submit btn-ripple "
                       type="submit"
-                      onClick={FilterUsers}
-                      style={{ width: "6em", margin: "10px 0em" }}
+                      onClick={() => FilterUsers(startDate, toDate)}
+                      style={{ width: "7em", margin: "10px 0em" }}
                     >
-                      Filter
-                    </Button>
-                    <Button
-                      className="button-submit btn-ripple"
-                      type="submit"
-                      onClick={Reset}
-                      style={{ width: "6em", margin: "10px 3em" }}
-                    >
-                      Reset
+                      Filter Date
                     </Button>
                   </div>
                 )}

@@ -1,20 +1,47 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+let token = JSON.parse(localStorage.getItem('RentOutToken'))
 const API = axios.create({
-  baseURL: "https://rent-out.herokuapp.com",
+  baseURL: "https://stalo.herokuapp.com",
+  headers:{
+    Authorization:`Bearer ${token}`
+  }
 });
 
-// let id = Cookies.get("RentOutToken");
-// API.interceptors.request.use((req) => {
-//   if (id) {
-//     req.headers["Authorization"] = `Bearer ${id}`;
-//   }
-//   return req;
-// });
 
-export const Signin = (SigninData) => API.post("/admin/adminLogin", SigninData);
+export const Signin = (SigninData) => API.post("/auth/admin-login",SigninData);
 
-export const DashUsers = (data) => API.post(`/admin/getUsers`, data);
+export const DashUsers = () => API.get(`/admin/dashboard`);
+export const company = () => API.get(`/admin/getAllCompanies`);
+export const Fetchfeedback = () => API.get(`/fd/getAllFeedbacks`);
+
+// getuser
+export const Users = () => API.get(`/admin/getAllUsers`);
+
+// popup
+export const popups = (popup) => API.post(`/ad/addPopupAd`, popup);
+export const Deletepopups = (data) => API.post(`ad/deletePopupAd`, data);
+export const Getpopups = () => API.get(`/ad/getPopupAd`) ;
+
+// top
+export const Topads = (data) => API.post(`/ad/addTopAd`, data);
+export const GetTop = () => API.get(`/ad/getTopAd`) ;
+export const Deletetopads = (data) => API.post(`/ad/deleteTopAd`, data);
+
+
+//bottom
+export const Bottomads = (data) => API.post(`/ad/addBottomAd`, data);
+export const GetBottom = () => API.get(`/ad/getBottomAd`) ;
+export const DeleteBottomads = (data) => API.post(`/ad/deleteBottomAd`, data);
+
+//category
+export const Categoryads = (data) => API.post(`/ad/addCategoryAd`, data);
+export const GetCategory = () => API.get(`/ad/getCategoryAd`) ;
+export const DeleteCategoryads = (data) => API.post(`/ad/deleteCategoryAd`, data);
+
+
+
+
 export const AllUsers = (data) => API.post(`/admin/getAllUsers`, data);
 export const UserAd = (data) => API.post(`/admin/getUsersAllAds`, data);
 export const FetchSearch = (data) => API.post(`/admin/getUserSearch`, data);

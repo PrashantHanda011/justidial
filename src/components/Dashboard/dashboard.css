@@ -33,14 +33,13 @@
   background: #fff5eb;
 
   border-radius: 16px;
-  width: 300px;
   height: 150px;
 }
 .card-Dash p {
   color: #6a6a6a;
 }
 .card-Dash h2 {
-  color: #ff9933;
+  color: rgba(22, 135, 217, 1);
 }
 .date-calendar {
   margin-right: 6em;
@@ -57,8 +56,8 @@
 }
 .rsearch-bar {
   /* border-radius: 9px!important; */
-  border: 1.5px solid #ff9933 !important;
-  color: #ff9933 !important;
+  border: 1.5px solid rgba(22, 135, 217, 1) !important;
+  color: rgba(22, 135, 217, 1) !important;
   outline: none !important;
   box-shadow: none !important;
   border-left: 0 !important;
@@ -66,18 +65,18 @@
 }
 .rsearch-bar::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #ff9933;
+  color: rgba(22, 135, 217, 1);
   opacity: 1; /* Firefox */
 }
 
 .rsearch-bar:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #ff9933;
+  color: rgba(22, 135, 217, 1);
 }
 
 .rsearch-bar::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #ff9933;
+  color: rgba(22, 135, 217, 1);
 }
 .report-top-right-button-collapse {
   grid-row-start: 1;
@@ -92,7 +91,7 @@
   transition: 0.1s ease-in-out;
 }
 .report-button {
-  background: #ff9933;
+  background: rgba(22, 135, 217, 1);
   border-radius: 25px;
   margin-left: 20px;
   padding: 5px 28px 5px 28px;
@@ -102,14 +101,14 @@
   transition: 0.1s ease-in-out;
 }
 .report-button:hover {
-  background: #ff9933;
+  background: rgba(22, 135, 217, 1);
 }
 .rsearch-button-icon {
   background-color: transparent !important;
-  border: 1.5px solid #ff9933 !important;
+  border: 1.5px solid rgba(22, 135, 217, 1) !important;
   /* border-radius: 9px !important; */
   margin-left: 10px !important;
-  color: #ff9933 !important;
+  color: rgba(22, 135, 217, 1) !important;
   border-right: 0 !important;
 }
 .report-span-filter {
@@ -118,7 +117,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
-  color: #ff9933;
+  color: rgba(22, 135, 217, 1);
   cursor: pointer;
   float: right;
 }
@@ -157,7 +156,7 @@
   font-weight: 600;
   font-size: 16px;
   margin-left: 20px;
-  color: #ff9933;
+  color: rgba(22, 135, 217, 1);
   cursor: default;
 }
 .R-bottom-pgno {
@@ -165,7 +164,7 @@
   font-weight: 700;
   font-size: 16px;
   margin-right: 45px;
-  color: #ff9933;
+  color: rgba(22, 135, 217, 1);
   cursor: default;
 }
 .report-details-heading {
@@ -219,7 +218,7 @@
 .loader {
   border: 10px solid #e5e4e4;
   border-radius: 50%;
-  border-top: 10px solid #ff9933;
+  border-top: 10px solid rgba(22, 135, 217, 1);
   width: 70px;
   height: 70px;
   -webkit-animation: spin 2s linear infinite; /* Safari */

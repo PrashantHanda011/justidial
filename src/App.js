@@ -1,19 +1,20 @@
 import React, { createContext, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-//Common import
 import Landing from "../src/components/Landing/Landing";
 import SideBar from "./components/SideBar/SideBar";
 import ClientDashboard from "./components/Dashboard/Dashboard";
 import UserManage from "./components/UserManage/UserManage";
-import UserDetails from "./components/UserManage/UserDetails";
-import Revenue from "./components/Revenue/Revenue";
-import PlanManage from "./components/PlanManage/PlanManage";
 import Feedback from "./components/Feedback/Feedback";
-import SubAdmin from "./components/SubAdmin/SubAdmin";
-import Addsub from "./components/SubAdmin/Addsub";
-import Editsub from "./components/SubAdmin/Editsub";
 import { Col, Row } from "react-bootstrap";
+import Ads from "./components/Ads/Ads";
+import Company from "./components/Company/Company";
+import Popup from "./components/Ads/Popup";
+import Top from "./components/Ads/Top";
+import Bottom from "./components/Ads/Bottom";
+import { Categoryads } from "./components/Axios/apis";
+import Category from "./components/Ads/Category";
+
 const UserContext = createContext();
 function App() {
   const [show, setShow] = useState(false);
@@ -52,50 +53,50 @@ function App() {
                 <Route
                   exact
                   path="/dashboard"
-                  element={user?.dashboard && <ClientDashboard />}
+                  element={<ClientDashboard />}
                 />
 
                 <Route
                   exact
                   path="/usermanage"
-                  element={user?.users && <UserManage />}
+                  element={ <UserManage />}
+                />
+
+                <Route
+                  exact
+                  path="/ads"
+                  element={ <Ads />}
                 />
                 <Route
                   exact
-                  path="/usermanage/:id"
-                  element={user?.users && <UserDetails />}
+                  path="/ads/popupadd"
+                  element={ <Popup />}
                 />
                 <Route
                   exact
-                  path="/revenue"
-                  element={user?.revenue && <Revenue />}
+                  path="/ads/topadd"
+                  element={ <Top />}
                 />
                 <Route
                   exact
-                  path="/plans"
-                  element={user?.plans && <PlanManage />}
+                  path="/ads/bottomadd"
+                  element={ <Bottom />}
+                />
+                <Route
+                  exact
+                  path="/ads/categoryadd"
+                  element={ <Category />}
                 />
                 <Route
                   exact
                   path="/feedback"
-                  element={user?.feedback && <Feedback />}
+                  element={<Feedback />}
                 />
                 <Route
                   exact
-                  path="/subadmin"
-                  element={user?.isSubadmin && <SubAdmin />}
+                  path="/companymanage"
+                  element={ <Company />}
                 />
-                <Route
-                  exact
-                  path="/subadmin/add"
-                  element={user?.isSubadmin && <Addsub />}
-                />
-                <Route
-                  exact
-                  path="/subadmin/edit/:id"
-                  element={user?.isSubadmin && <Editsub />}
-                />
-                {/* Clientside */}
               </Routes>
             </Col>
           </Row>

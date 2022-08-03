@@ -23,7 +23,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
-  color: #FF9933;
+  color: rgba(22, 135, 217, 1);
   letter-spacing: 0.4px;
   margin-top: 15px;
   margin-left: -10px;
@@ -36,7 +36,7 @@
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 0.4px;
-  color: #FF9933;
+  color: rgba(22, 135, 217, 1);
   margin-top: 15px;
   align-content: center;
   cursor: pointer;
@@ -56,5 +56,5 @@
   display: inline;
   }
 .logout-main> span:hover {
-  color: #f3a556
+  color: rgba(22, 135, 217, 1)
 }

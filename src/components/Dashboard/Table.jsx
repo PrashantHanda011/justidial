@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Singlefield from "./Singlefield";
 // import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
 
 const DashTable = ({ user }) => {
+console.log(user)
   return (
+
     <>
       {user?.length !== 0 ? (
         <Table className="report-table-main">
@@ -11,46 +16,35 @@ const DashTable = ({ user }) => {
             <tr className="Rtable-header">
               <th>S.no</th>
 
-              <th>User Name</th>
+              <th> Name</th>
               <th>E-mail</th>
-              <th>Contact</th>
-              <th>Location</th>
-              <th>Plan</th>
-
+              <th>Firm Name</th>
               <th>Action</th>
+
             </tr>
           </thead>
           {user?.map((data, id) => {
-            return (
-              <>
-                <tbody key={id} style={{ border: "none" }}>
-                  <tr>
-                    <td className="Rtable-data">{id + 1}</td>
-                    <td className="Rtable-data">{data?.name}</td>
-                    <td className="Rtable-data">{data?.email}</td>
-                    <td className="Rtable-data">{data?.number}</td>
-
-                    <td className="Rtable-data">
-                      {data?.city}, {data?.state}
-                    </td>
-                    <td className="Rtable-data">{data?.plan}</td>
-                    <td
-                      className="Rtable-data"
-                      style={{
-                        color: "#28318C",
-                      }}
-                    >
-                      Block
-                    </td>
-                  </tr>
-                </tbody>
-              </>
-            );
+            return <Singlefield
+              id={id}
+              name={data?.name}
+              address={data?.address}
+              city={data?.city}
+              email={data?.email}
+              firm_name={data?.firm_name}
+              pincode={data?.pincode}
+              type={data?.type}
+              position={data?.position}
+              mob_number={data?.mob_number}
+              huges_number={data?.huges_number}
+              gstin_number={data?.gstin_number}
+              full_huges_number={data?.full_huges_number}
+            />
           })}
         </Table>
       ) : (
         <h2 className="text-center">No User Data To Display</h2>
       )}
+
 
       {/* <div style={{ display: "flex", justifyContent: "space-between" }}>
         <p className="R-bottom-text">

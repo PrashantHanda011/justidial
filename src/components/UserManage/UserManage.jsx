@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../App";
-import { AllUsers, FetchSearch } from "../Axios/apis";
+import {  Users } from "../Axios/apis";
 import { Row, Form, InputGroup, Button } from "react-bootstrap";
 import CommonHeader from "../Header/Header";
 import { BsSearch, BsFillCalendarDateFill } from "react-icons/bs";
@@ -16,10 +16,15 @@ const UsersManage = () => {
   const [toDate, setToDate] = useState("");
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
+  const [searchInput, setsearchInput] = useState('');
+  const [filterData, setfilterData] = useState([])
+
+  
   const FetchUsers = async () => {
     try {
-      const { data } = await AllUsers();
-      setUser(data);
+      const { data } = await Users();
+      console.log(data)
+      setUser(data?.data);
     } catch (error) {
       console.log(error);
     }
@@ -36,8 +41,8 @@ const UsersManage = () => {
   const FilterUsers = async (a,b) => {
     let NewData = { from: a, to: b };
     try {
-      const { data } = await AllUsers(NewData);
-      setUser(data);
+      // const { data } = await AllUsers(NewData);
+      // setUser(data);
     } catch (error) {
       console.log(error);
     }
@@ -49,22 +54,28 @@ const UsersManage = () => {
     setStartDate("");
     setToDate("");
   };
-  useEffect(() => {
-    const SearchUser = async () => {
-      let NewData = { name: search };
-      try {
-        const { data } = await FetchSearch(NewData);
-        setSearchData(data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    SearchUser();
-  }, [search]);
-  let result = search?.length === 0 ? user?.data : searchData;
+
+  const searchItems = (searchValue) => {
+    setsearchInput(searchValue)
+    if(searchInput !== ''){
+      let filteredData =  user?.filter((item) => {  
+      return Object.values(item).join('').toLowerCase().includes(searchValue.toLowerCase())
+      })
+      setfilterData(filteredData)
+    }else{
+      setfilterData(user)
+    }
+  }
+
+
+
+
+
+  let result = search?.length === 0 ? user : searchData;
+
   return (
     <>
-      <div className="main-div">
+      <div className="main-div ps-5">
         <div
           className="clientsales-main"
           style={{ marginLeft: show ? "1px" : "2.3em" }}
@@ -82,7 +93,7 @@ const UsersManage = () => {
                 className="card-Dash text-start "
                 style={{ backgroundColor: "transparent", height: "0" }}
               >
-                <h2 className="mt-4">Users Management</h2>
+                <h2 className="mt-4">Users </h2>
               </div>
 
               <Form className="search-main">
@@ -94,9 +105,8 @@ const UsersManage = () => {
                     className="rsearch-bar"
                     type="text"
                     placeholder="Search"
-                    value={search}
-                    onChange={(e) => setSearch(e?.target?.value)}
-                  />
+                    value={searchInput}
+                onChange={(e)=>searchItems(e.target.value)}                  />
                 </InputGroup>
               </Form>
             </div>
@@ -110,8 +120,8 @@ const UsersManage = () => {
                       filter ? setFilter(false) : setFilter(true)
                     }
                   >
-                    Filter Users{" "}
-                    <BsFillCalendarDateFill size="24" color="#000" />{" "}
+                    {/* Filter Users{" "}
+                    <BsFillCalendarDateFill size="24" color="#000" />{" "} */}
                   </h2>
                 </div>
                 {filter && (
@@ -192,7 +202,7 @@ const UsersManage = () => {
                   </div>
                 )}
                 <Row style={{ marginTop: "20px" }}>
-                  <TableData user={result} />
+                  <TableData user={(searchInput.length > 1) ?(filterData):(user)} />
                 </Row>
               </>
             ) : (

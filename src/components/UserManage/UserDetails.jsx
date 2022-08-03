@@ -15,6 +15,7 @@ const UserDetails = () => {
     let NewData = { userId: id.id };
     try {
       const { data } = await UserAd(NewData);
+      console.log(data)
       setPlans(data?.data);
     } catch (error) {
       console.log(error);

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
+import Singleuserfield from "./Singleuserfield";
 // import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
 
 const DashTable = ({ user }) => {
@@ -15,75 +16,28 @@ const DashTable = ({ user }) => {
             <tr className="Rtable-header">
               <th>S.no</th>
 
-              <th>User Name</th>
+              <th> Name</th>
+              <th> Phone Number</th>
               <th>E-mail</th>
-              <th>Contact</th>
-              <th>Location</th>
-              <th>Plan</th>
+              <th>Firm Name</th>
+              
 
               <th>Action</th>
             </tr>
           </thead>
           {user?.map((data, id) => {
-            return (
-              <>
-                <tbody key={id} style={{ border: "none" }}>
-                  <tr>
-                    <td
-                      className="Rtable-data"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => Details(data?._id)}
-                    >
-                      {id + 1}
-                    </td>
-                    <td
-                      className="Rtable-data"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => Details(data?._id)}
-                    >
-                      {data?.name}
-                    </td>
-                    <td
-                      className="Rtable-data"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => Details(data?._id)}
-                    >
-                      {data?.email}
-                    </td>
-                    <td
-                      className="Rtable-data"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => Details(data?._id)}
-                    >
-                      {data?.number}
-                    </td>
-
-                    <td
-                      className="Rtable-data"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => Details(data?._id)}
-                    >
-                      {data?.city}, {data?.state}
-                    </td>
-                    <td
-                      className="Rtable-data"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => Details(data?._id)}
-                    >
-                      {data?.plan}
-                    </td>
-                    <td
-                      className="Rtable-data"
-                      style={{
-                        color: "#28318C",
-                      }}
-                    >
-                      Block
-                    </td>
-                  </tr>
-                </tbody>
-              </>
-            );
+            return <Singleuserfield
+              id={id}
+              name={data.name}
+              email={data.email}
+              firm_name={data.firm_name}
+              full_huges_number={data.full_huges_number}
+              gstin_number={data.gstin_number}
+              huges_number={data.huges_number}
+              mob_number={data.mob_number}
+              position={data.position}
+              type={data.type}
+            />
           })}
         </Table>
       ) : (

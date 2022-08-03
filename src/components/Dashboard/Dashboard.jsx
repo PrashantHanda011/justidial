@@ -8,7 +8,7 @@ import { BsSearch, BsFillCalendarDateFill } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TableData from "./Table";
-
+import axios from "axios";
 const ClientDashboard = () => {
   const { show } = useContext(UserContext);
   const [filter, setFilter] = useState(false);
@@ -17,11 +17,15 @@ const ClientDashboard = () => {
   const [toDate, setToDate] = useState("");
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
+  const [searchInput, setsearchInput] = useState('');
+  const [filterData, setfilterData] = useState([])
 
   const FetchUsers = async () => {
     try {
+      
       const { data } = await DashUsers();
       setUser(data.data);
+      console.log(data)
     } catch (error) {
       console.log(error);
     }
@@ -38,8 +42,8 @@ const ClientDashboard = () => {
   const FilterUsers = async (a, b) => {
     let NewData = { from: a, to: b };
     try {
-      const { data } = await DashUsers(NewData);
-      setUser(data.data);
+      //const { data } = await DashUsers(NewData);
+    //  setUser(data.data);
     } catch (error) {
       console.log(error);
     }
@@ -52,22 +56,24 @@ const ClientDashboard = () => {
     setStartDate("");
     setToDate("");
   };
-  useEffect(() => {
-    const SearchUser = async () => {
-      let NewData = { name: search };
-      try {
-        const { data } = await FetchSearch(NewData);
-        setSearchData(data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    SearchUser();
-  }, [search]);
+
+  const searchItems = (searchValue) => {
+    setsearchInput(searchValue)
+    if(searchInput !== ''){
+      let filteredData =  user?.users?.filter((item) => {  
+      return Object.values(item).join('').toLowerCase().includes(searchValue.toLowerCase())
+      })
+      setfilterData(filteredData)
+    }else{
+      setfilterData(user?.users)
+    }
+  }
+
+
   let result = search?.length === 0 ? user?.users : searchData;
   return (
     <>
-      <div className="main-div">
+      <div className="main-div ps-5">
         <div
           className="clientsales-main"
           style={{ marginLeft: show ? "1px" : "2.3em" }}
@@ -87,6 +93,11 @@ const ClientDashboard = () => {
 
                     <h2 className="mt-4">{user?.count}</h2>
                   </div>
+                  <div className="card-Dash text-start p-4">
+                    <p> Total Companies</p>
+
+                    <h2 className="mt-4">{user?.count2}</h2>
+                  </div>
 
                   <Form className="search-main">
                     <InputGroup className="mb-3">
@@ -97,8 +108,8 @@ const ClientDashboard = () => {
                         className="rsearch-bar"
                         type="text"
                         placeholder="Search"
-                        value={search}
-                        onChange={(e) => setSearch(e?.target?.value)}
+                        value={searchInput}
+                onChange={(e)=>searchItems(e.target.value)}
                       />
                     </InputGroup>
                   </Form>
@@ -110,12 +121,12 @@ const ClientDashboard = () => {
                       filter ? setFilter(false) : setFilter(true)
                     }
                   >
-                    Filter Users{" "}
-                    <BsFillCalendarDateFill size="24" color="#000" />{" "}
+                    {/* Filter Users{" "}
+                    <BsFillCalendarDateFill size="24" color="#000" />{" "} */}
                   </h2>
                 </div>
                 {filter && (
-                  <div className="d-flex justify-content-start">
+                  {/* <div className="d-flex justify-content-start">
                     <Form.Group>
                       <Form.Label>From Date</Form.Label>
                       <DatePicker
@@ -189,10 +200,10 @@ const ClientDashboard = () => {
                     >
                       Filter Date
                     </Button>
-                  </div>
+                  </div> */}
                 )}
                 <Row style={{ marginTop: "20px" }}>
-                  <TableData user={result} />
+                  <TableData user={(searchInput.length > 1) ?(filterData):(user?.users)} />
                 </Row>
               </>
             ) : (

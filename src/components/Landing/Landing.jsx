@@ -20,27 +20,15 @@ const Landing = () => {
     const { name } = e.target;
     setFormData({ ...formData, [name]: e.target.value });
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (formData.email && formData.password) {
       try {
         const { data } = await Signin(formData);
+
         Cookies.set("RentOutToken", data?.data?.token);
-        localStorage.setItem("user", JSON.stringify(data?.data?.user));
-        const user = data?.data?.user;
-        user?.dashboard
-          ? navigate("/dashboard")
-          : user?.users
-          ? navigate("/usermanage")
-          : user?.revenue
-          ? navigate("/revenue")
-          : user?.feedback
-          ? navigate("/feedback")
-          : user?.plans
-          ? navigate("/plans")
-          : user?.isSubadmin
-          ? navigate("/subadmin")
-          : navigate("/");
+        localStorage.setItem("RentOutToken", JSON.stringify(data?.data?.token));        
         window.location.reload();
       } catch (error) {
         console.log(error);

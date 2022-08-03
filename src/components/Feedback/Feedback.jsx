@@ -1,16 +1,20 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../App";
-import { FetchPlans } from "../Axios/apis";
+import { Fetchfeedback } from "../Axios/apis";
 import { Row, Button } from "react-bootstrap";
 import CommonHeader from "../Header/Header";
+import FeedbackCard from "./FeedbackCard";
+import './Feedback.css'
 const Feedback = () => {
   const { show } = useContext(UserContext);
-  const [plans, setPlans] = useState([]);
+  const [feedback, setfeedback] = useState([]);
+
 
   const GetPlans = async () => {
     try {
-      const { data } = await FetchPlans();
-      setPlans(data?.data);
+       const { data } = await Fetchfeedback();
+       console.log(data)
+       setfeedback(data?.data);
     } catch (error) {
       console.log(error);
     }
@@ -27,29 +31,25 @@ const Feedback = () => {
           style={{ marginLeft: show ? "1px" : "2.3em" }}
         >
           <Row>
-            <CommonHeader />
-            {plans?.length !== 0 ? (
+           <CommonHeader />
+            {feedback?.length >0 ? (
               <>
-                <div>
-                  <h2 className="title"> FeedBack Management</h2>
-                </div>
+              <div
+                className="card-Dash text-start ms-5 ms-3 h-25"
+                style={{ backgroundColor: "transparent" }}
+              >
+                <h2 className="mt-4">Feedback</h2>
+              </div>
 
-                <div className="d-flex justify-content-between flex-wrap mb-5">
-                  {plans?.map((id) => (
-                    <div className="card-plan mt-3" key={id}>
-                      <h6>Rohit Pal</h6>
-                      <div className="d-flex justify-content-center">
-                        <div className="user-img d-flex justify-content-center" />
-                      </div>
-                      <p className="mt-3">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam.
-                      </p>
-
-                      <h2><b>E-mail:</b> rohit23@gmail.com<br/><br/><b>Contact:</b> +91 786 5347 894</h2>
-                    </div>
-                  ))}
+                <div className="d-flex  row flex-wrap mb-5 ms-5">
+                  {feedback?.map((item,index) => {
+                   return <FeedbackCard
+                            key={index}
+                            message={item?.message}
+                            rating={item?.rating}
+                   />
+                  }
+                  )}
                 </div>
               </>
             ) : (

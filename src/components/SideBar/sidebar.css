@@ -2,7 +2,7 @@
   position: fixed !important;
   height: 100%;
   background: #ffff;
-  width: 230px;
+  width: 260px;
   transition: 0.1s ease-in-out;
   margin-top: -4em;
 
@@ -18,7 +18,7 @@
   margin-top: -4em;
 }
 .menu-item-sidebar {
-  color:  #FF9933;
+  color:  #ff9933;
   margin: 5px 10px 12px -10px;
   cursor: pointer;
   font-size: 16px;
@@ -29,13 +29,13 @@
 .sidebar-setting:hover,
 .menu-item-sidebar-hide:hover,
 .sidebar-setting-hide:hover {
-  color: #FF9933 !important;
+  color:    #ff9933 !important;
 
   width: 100% !important;
   font-weight: 600;
 } */
 .sidebar-setting {
-  color:  #FF9933 !important;
+  color:  #ff9933!important;
   margin: 5px 10px 0px 9px;
   cursor: pointer;
   font-size: 16px;
@@ -43,7 +43,7 @@
   white-space: nowrap;
 }
 .menu-item-sidebar-hide {
-  color: #FF9933 !important;
+  color:    #ff9933 !important;
   margin: 5px 10px 12px 10px;
   cursor: pointer;
   font-size: 16px;
@@ -51,7 +51,7 @@
   white-space: nowrap;
 }
 .sidebar-setting-hide {
-  color: #FF9933 !important;
+  color:    #ff9933 !important;
   margin: 5px 10px 0px 2px;
   cursor: pointer;
   font-size: 16px;
@@ -60,7 +60,7 @@
 }
 
 .menu-item-header {
-  color:  #FF9933 !important;
+  color:     #ff9933 !important;
   margin: 5px 9px -2px -16px;
   cursor: pointer;
   font-size: 20px;

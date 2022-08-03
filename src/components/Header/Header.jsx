@@ -44,7 +44,7 @@ const logout =()=>{
             />
             <p
               className={"logout-main mt-4"}
-              style={{ fontWeight: "600", cursor: "pointer",color:'#FF9933' }}
+              style={{ fontWeight: "600", cursor: "pointer",color:'rgba(22, 135, 217, 1)' }}
             >
               
               &nbsp;&nbsp; ADMIN PANEL

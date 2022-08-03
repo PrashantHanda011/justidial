@@ -40,7 +40,7 @@ const SideBar = () => {
           </Drawer.Header>
           <hr style={{ marginTop: "-11px" }} />
           <Drawer.Nav>
-            {user?.dashboard && (
+            
               <Drawer.Item className="hover">
                 <NavLink
                   exact
@@ -67,8 +67,9 @@ const SideBar = () => {
                   </h2>
                 </NavLink>
               </Drawer.Item>
-            )}
-            {user?.users && (
+            
+
+            
               <Drawer.Item>
                 <NavLink
                   to="/usermanage"
@@ -93,11 +94,11 @@ const SideBar = () => {
                   </h2>
                 </NavLink>
               </Drawer.Item>
-            )}
-            {user?.revenue && (
+            
+            
               <Drawer.Item>
                 <NavLink
-                  to="/revenue"
+                  to="/ads"
                   className={({ isActive }) =>
                     isActive ? "NavLink-active" : "NavLink"
                   }
@@ -115,15 +116,15 @@ const SideBar = () => {
                     >
                       <AiOutlineStock size={24} />
                     </span>
-                    Revenue
+                    Ads
                   </h2>
                 </NavLink>
               </Drawer.Item>
-            )}
-            {user?.plans && (
+            
+            
               <Drawer.Item>
                 <NavLink
-                  to="/plans"
+                  to="/companymanage"
                   className={({ isActive }) =>
                     isActive ? "NavLink-active" : "NavLink"
                   }
@@ -141,12 +142,11 @@ const SideBar = () => {
                     >
                       <AiFillSnippets size={24} />
                     </span>
-                    Plan Management
+                    Company Management
                   </h2>
                 </NavLink>
               </Drawer.Item>
-            )}
-            {user?.feedback && (
+
               <Drawer.Item>
                 <NavLink
                   to="/feedback"
@@ -171,33 +171,7 @@ const SideBar = () => {
                   </h2>
                 </NavLink>
               </Drawer.Item>
-            )}
-            {user?.isSubadmin && (
-              <Drawer.Item>
-                <NavLink
-                  to="/subadmin"
-                  className={({ isActive }) =>
-                    isActive ? "NavLink-active" : "NavLink"
-                  }
-                  title="SubAdmin"
-                >
-                  <h2
-                    className={
-                      show === false
-                        ? "menu-item-sidebar"
-                        : "menu-item-sidebar-hide"
-                    }
-                  >
-                    <span
-                      style={{ paddingRight: show === true ? "60px" : "15px" }}
-                    >
-                      <AiFillSnippets size={24} />
-                    </span>
-                    SubAdmin
-                  </h2>
-                </NavLink>
-              </Drawer.Item>
-            )}
+
           </Drawer.Nav>
           <div style={{ position: "relative" }}>
             <div

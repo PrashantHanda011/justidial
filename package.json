@@ -15,7 +15,7 @@
     "js-cookie": "^3.0.1",
     "js-file-download": "^0.4.12",
     "react": "^17.0.2",
-    "react-bootstrap": "^2.1.2",
+    "react-bootstrap": "^2.4.0",
     "react-bootstrap-drawer": "^1.0.1",
     "react-chartjs-2": "^4.0.1",
     "react-charts": "^3.0.0-beta.35",

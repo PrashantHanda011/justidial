@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.css";
-import Logo from "../../assets/Logo.svg";
+import Logo from "../../assets/stelologo.png";
 // import Face from "../../assets/Face.svg";
 import { useNavigate } from "react-router-dom";
 const Navbar = () => {
@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div className="navbar-main">
       <img src={Logo} alt="Logo" className="navLogo" />
-      <p className="navLogo-name" onClick={() => navigate("/")}>Rent Out</p>
+      <p className="navLogo-name" onClick={() => navigate("/")}>Stelo</p>
       {/* <p className="navRegister"  onClick={() => navigate("/register")}>
         Dont have an account? <b style={{ color: "#385E54" }}>Register</b>{" "}
        

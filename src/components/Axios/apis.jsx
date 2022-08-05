@@ -17,6 +17,7 @@ export const Fetchfeedback = () => API.get(`/fd/getAllFeedbacks`);
 
 // getuser
 export const Users = () => API.get(`/admin/getAllUsers`);
+export const UpdateUsers = (data) => API.post(`admin/updateUser`,data);
 
 // popup
 export const popups = (popup) => API.post(`/ad/addPopupAd`, popup);

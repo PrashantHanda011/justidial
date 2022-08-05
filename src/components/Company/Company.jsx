@@ -27,7 +27,6 @@ function Company() {
     try {
       
       const { data } = await company();
-      console.log(data.data);
       setcompanies(data.data);
     } catch (error) {
       console.log(error);

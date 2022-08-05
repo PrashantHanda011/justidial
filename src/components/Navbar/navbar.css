@@ -14,8 +14,8 @@
   overflow: hidden;
 }
 .navLogo {
-  height: 80px;
-  margin-top: 20px;
+  height: 70px;
+  margin-right: 10px;
   cursor: pointer;
 }
 .navLogo-name {
@@ -23,7 +23,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
-  color: rgba(22, 135, 217, 1);
+  color: #ff9933;
   letter-spacing: 0.4px;
   margin-top: 15px;
   margin-left: -10px;
@@ -36,7 +36,7 @@
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 0.4px;
-  color: rgba(22, 135, 217, 1);
+  color: #ff9933;
   margin-top: 15px;
   align-content: center;
   cursor: pointer;
@@ -56,5 +56,5 @@
   display: inline;
   }
 .logout-main> span:hover {
-  color: rgba(22, 135, 217, 1)
+  color: #ff9933
 }

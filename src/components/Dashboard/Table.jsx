@@ -26,6 +26,7 @@ console.log(user)
           {user?.map((data, id) => {
             return <Singlefield
               id={id}
+              userid={data._id}
               name={data?.name}
               address={data?.address}
               city={data?.city}

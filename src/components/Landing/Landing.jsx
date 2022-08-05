@@ -96,7 +96,6 @@ const Landing = () => {
                 </Form.Control.Feedback>
               </InputGroup>
 
-              <p className="forgot-password-form">Forgot password?</p>
 
               <Button
                 className="button-submit btn-ripple"

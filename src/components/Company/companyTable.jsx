@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
+import SingleCompany from "./SingleCompany";
 
 const companyTable = ({ user }) => {
   return (
@@ -18,19 +19,7 @@ const companyTable = ({ user }) => {
             </tr>
           </thead>
           {user?.map((data, id) => {
-            return (
-              <>
-                <tbody key={id} style={{ border: "none" }}>
-                  <tr>
-                    <td className="Rtable-data">{id + 1}</td>
-                    <td className="Rtable-data">{data?.firm_name}</td>
-                    <td className="Rtable-data">{data?.huges_number[0]}</td>
-                    <td className="Rtable-data">{data?.address ?(data?.address):("No address")}</td>
-                    <td className="Rtable-data"><button className="btn btn-primary ">View</button></td>
-                    
-                  </tr>
-                </tbody>
-              </>
+            return (<SingleCompany data={data} key={id} />
             );
           })}
         </Table>

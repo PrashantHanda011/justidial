@@ -68,12 +68,13 @@
   white-space: nowrap;
 }
 .sidebarLogo {
-  width: 50px;
-  margin: 0px -15px -5px 0px;
+  height: 70px;
+  margin-bottom: 10px;
 }
 .sidebarLogo-hide {
   width: 50px;
   margin: 0px 35px -5px 10px;
+  margin-bottom: 10px;
 }
 
 .collapse-icon {

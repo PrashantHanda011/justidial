@@ -3,7 +3,7 @@ import { UserContext } from "../../App";
 import "react-bootstrap-drawer/lib/style.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Drawer } from "react-bootstrap-drawer";
-import Logo from "../../assets/Logo.svg";
+import Logo from "../../assets/stelologo.png";
 import Collapseicon from "../../assets/Collapse.svg";
 import Cookies from "js-cookie";
 import { AiFillHome, AiOutlineStock, AiFillSnippets } from "react-icons/ai";
@@ -36,7 +36,7 @@ const SideBar = () => {
               alt="Logo"
               className={show === false ? "sidebarLogo" : "sidebarLogo-hide"}
             />{" "}
-            Rent Out
+              Stelo
           </Drawer.Header>
           <hr style={{ marginTop: "-11px" }} />
           <Drawer.Nav>

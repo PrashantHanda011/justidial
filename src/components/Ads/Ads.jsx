@@ -89,7 +89,7 @@ useEffect(() => {
             <div className=" d-flex">
             {
               popupads?.map((item,index)=>{
-                return <PopupSingle item={item} id={index}/>})
+                return <PopupSingle item={item?.popup} id={index}/>})
               }
             
             </div>

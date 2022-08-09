@@ -3,14 +3,13 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 function SingleCompany(prop) {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
     <>
-         <tbody key={prop.id} style={{ border: "none" }}>
+         <tbody  style={{ border: "none" }}>
                   <tr>
-                    <td className="Rtable-data">{prop?.id + 1}</td>
+                    <td className="Rtable-data">{prop?.ind + 1}</td>
                     <td className="Rtable-data">{prop?.data?.firm_name}</td>
                     <td className="Rtable-data">{prop?.data?.huges_number[0]}</td>
                     <td className="Rtable-data">{prop?.data?.address ?(prop?.data?.address):("No address")}</td>

@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import SingleCompany from "./SingleCompany";
 
 const companyTable = ({ user }) => {
+  console.log(user)
   return (
     <>
       {user?.length !== 0 ? (
@@ -18,8 +19,8 @@ const companyTable = ({ user }) => {
 
             </tr>
           </thead>
-          {user?.map((data, id) => {
-            return (<SingleCompany data={data} key={id} />
+          {user?.map((data, index) => {
+            return (<SingleCompany data={data} ind={index} key={index} />
             );
           })}
         </Table>

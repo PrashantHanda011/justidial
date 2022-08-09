@@ -28,6 +28,8 @@ const DashTable = ({ user }) => {
           {user?.map((data, id) => {
             return <Singleuserfield
               id={id}
+              key={id}
+              userid={data._id}
               name={data.name}
               email={data.email}
               firm_name={data.firm_name}

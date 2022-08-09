@@ -44,10 +44,11 @@ const Feedback = () => {
                 <div className="d-flex  row flex-wrap mb-5 ms-5">
                   {feedback?.map((item,index) => {
                    return <FeedbackCard
-                            id={index}
+                            key={index}
                             message={item?.message}
                             rating={item?.rating}
-                            date={item.createdAt}
+                            date={item?.createdAt}
+                            name = {item?.user?.name}
                    />
                   }
                   )}

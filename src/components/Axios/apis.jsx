@@ -39,6 +39,8 @@ export const DeleteBottomads = (data) => API.post(`/ad/deleteBottomAd`, data);
 export const Categoryads = (data) => API.post(`/ad/addCategoryAd`, data);
 export const GetCategory = () => API.get(`/ad/getCategoryAd`) ;
 export const DeleteCategoryads = (data) => API.post(`/ad/deleteCategoryAd`, data);
+export const GetallCategory = () => API.get(`/category/getAllCategories`);
+export const GetallCategoryByID = (data) => API.post(`/company/getCompanyByCategory`,data);
 
 
 

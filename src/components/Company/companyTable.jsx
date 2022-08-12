@@ -3,7 +3,6 @@ import { Table } from "react-bootstrap";
 import SingleCompany from "./SingleCompany";
 
 const companyTable = ({ user }) => {
-  console.log(user)
   return (
     <>
       {user?.length !== 0 ? (

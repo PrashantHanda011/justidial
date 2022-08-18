@@ -172,6 +172,31 @@ const SideBar = () => {
                 </NavLink>
               </Drawer.Item>
 
+              <Drawer.Item>
+                <NavLink
+                  to="/sendnotification"
+                  className={({ isActive }) =>
+                    isActive ? "NavLink-active" : "NavLink"
+                  }
+                  title="Feedback Management"
+                >
+                  <h2
+                    className={
+                      show === false
+                        ? "menu-item-sidebar"
+                        : "menu-item-sidebar-hide"
+                    }
+                  >
+                    <span
+                      style={{ paddingRight: show === true ? "60px" : "15px" }}
+                    >
+                      <AiFillSnippets size={24} />
+                    </span>
+                    Send Notifiation
+                  </h2>
+                </NavLink>
+              </Drawer.Item>
+
           </Drawer.Nav>
           <div style={{ position: "relative" }}>
             <div

@@ -10,7 +10,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import TableData from "./companyTable";
 import axios from "axios";
 import Select from 'react-select'
-
+import { Link } from "react-router-dom";
+import Modal from 'react-bootstrap/Modal'
 function Company() {
 
   const { show } = useContext(UserContext);
@@ -24,11 +25,14 @@ function Company() {
   const [filterData, setfilterData] = useState([])
   const [loder, setloder] = useState(true)
   const [category, setcategory] = useState()
+ 
+
 
   const FetchCompany = async () => {
     try {
       
       const { data } = await company();
+      console.log(data)
       setcompanies(data.data);
     } catch (error) {
       console.log(error);
@@ -77,6 +81,8 @@ useEffect(() => {
     }
   }
 
+
+// modal
   return (
     <>
         <div className="main-div ps-3">
@@ -101,8 +107,12 @@ useEffect(() => {
                 style={{ backgroundColor: "transparent", height: "0" }}
               >
                 <h2 className="mt-4 mb-3">Company </h2>
+                <Link to={'/companymanage/addcompany'}>
+                  <Button variant="primary" >
+                    Add Company
+                  </Button>
+                </Link>
               </div>
-
 
 
 

@@ -16,9 +16,26 @@ function FeedbackCard(prop) {
                       <p className="mt-3">
                        {prop?.message}
                       </p>
+
                       <p className="mt-3">
                        User - {prop?.name}
                       </p>
+
+                      {
+                        prop?.email ?(
+                          <p className="mt-3">
+                           {prop?.email}
+                          </p>
+                        ):("")
+                      }
+                      {
+                        prop?.mob ?(
+                          <p className="mt-3">
+                          {prop?.mob}
+                          </p>
+                        ):("")
+                      }
+
                       <p className="mt-3">
                        Date - {prop.date?(moment(prop.date).format('DD-MM-YYYY')):("")   }
                       </p>

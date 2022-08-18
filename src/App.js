@@ -14,6 +14,8 @@ import Top from "./components/Ads/Top";
 import Bottom from "./components/Ads/Bottom";
 import { Categoryads } from "./components/Axios/apis";
 import Category from "./components/Ads/Category";
+import SendNotification from "./components/Send Notification/SendNotification";
+import AddCompany from "./components/Company/AddCompany";
 
 const UserContext = createContext();
 function App() {
@@ -96,6 +98,16 @@ function App() {
                   exact
                   path="/companymanage"
                   element={ <Company />}
+                />
+                <Route
+                  exact
+                  path="/companymanage/addcompany"
+                  element={ <AddCompany />}
+                />
+                <Route
+                  exact
+                  path="/sendnotification"
+                  element={ <SendNotification />}
                 />
               </Routes>
             </Col>

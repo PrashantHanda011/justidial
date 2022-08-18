@@ -49,6 +49,8 @@ const Feedback = () => {
                             rating={item?.rating}
                             date={item?.createdAt}
                             name = {item?.user?.name}
+                            mob={item?.user?.mob_number}
+                            email={item?.user?.email}
                    />
                   }
                   )}

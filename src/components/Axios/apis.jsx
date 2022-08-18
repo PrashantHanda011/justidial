@@ -13,7 +13,15 @@ export const Signin = (SigninData) => API.post("/auth/admin-login",SigninData);
 
 export const DashUsers = () => API.get(`/admin/dashboard`);
 export const company = () => API.get(`/admin/getAllCompanies`);
+export const PostCompany = (data) => API.post(`/company/addCompany`,data);
 export const Fetchfeedback = () => API.get(`/fd/getAllFeedbacks`);
+
+
+// notification
+
+export const NotificationSend = (data) => API.post(`/admin/sendPushNotification`,data);
+
+
 
 // getuser
 export const Users = () => API.get(`/admin/getAllUsers`);

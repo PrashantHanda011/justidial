@@ -7,11 +7,11 @@ import CommonHeader from "../Header/Header";
 import { BsSearch, BsFillCalendarDateFill } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import CompanyTable from "./CompanyTable";
 import axios from "axios";
 import Select from 'react-select'
 import { Link } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal'
+import CompanyTable from "./companyTable";
 function Company() {
 
   const { show } = useContext(UserContext);

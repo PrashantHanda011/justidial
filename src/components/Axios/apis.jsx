@@ -13,8 +13,12 @@ export const Signin = (SigninData) => API.post("/auth/admin-login",SigninData);
 
 export const DashUsers = () => API.get(`/admin/dashboard`);
 export const company = () => API.get(`/admin/getAllCompanies`);
+export const GetCompanyById = (id) => API.get(`/company/getCompanyById?id=${id}`);
+export const UpdateCompany = (data) => API.post(`/company/editCompany`,data);
+export const DeleteCompany = (data) => API.post(`/company/deleteCompany`,data);
 export const PostCompany = (data) => API.post(`/company/addCompany`,data);
 export const Fetchfeedback = () => API.get(`/fd/getAllFeedbacks`);
+
 
 
 // notification
@@ -25,6 +29,8 @@ export const NotificationSend = (data) => API.post(`/admin/sendPushNotification`
 
 // getuser
 export const Users = () => API.get(`/admin/getAllUsers`);
+export const UsersById = (data) => API.post(`/admin/userById`,data);
+export const UserDelete  = (data) => API.post(`/admin/deleteUser`,data);
 export const UpdateUsers = (data) => API.post(`admin/updateUser`,data);
 
 // popup

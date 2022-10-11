@@ -3,16 +3,20 @@ import CommonHeader from '../Header/Header'
 import { Form } from 'react-bootstrap';
 import {storage} from '../firebase/index'
 import { UserContext } from '../../App';
-import { GetallCategory, PostCompany } from '../Axios/apis';
+import { GetallCategory, GetCompanyById, PostCompany, UpdateCompany } from '../Axios/apis';
 import { useNavigate } from 'react-router-dom';
+import {useParams} from "react-router-dom"
 import {getDownloadURL, ref,uploadBytes, uploadBytesResumable} from 'firebase/storage'
 
 
-function AddCompany() {
+function EditCompany() {
   const { show } = useContext(UserContext);
   const [category, setcategory] = useState()
+  const {id}=useParams()
   const [profilePercent, setprofilePercent] = useState(0);
   const [ImagePercent, setImagePercent] = useState(0);
+  const [oldCompany, setoldCompany] = useState({});
+  const [loader, setloader] = useState(true)
   const [addCompany, setaddCompany] = useState({
     firm_name: "",
     huges_number: [],
@@ -35,7 +39,6 @@ function AddCompany() {
     const { name } = e.target
     setaddCompany({ ...addCompany, [name]: e.target.value })
   }
-  console.log(addCompany)
 
   const FetchAllCategory = async () => {
     try {
@@ -189,15 +192,45 @@ function AddCompany() {
 
   // handlesubmit
 
-
-  const handleSubmit = async () => {
+const temp = {
+    id:`${id}`,
+    ...addCompany
+}
+console.log(temp)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
-      await PostCompany(addCompany);
+      await UpdateCompany(temp);
       location('/companymanage')
     } catch (error) {
       console.log(error);
     }
   }
+
+
+
+
+  //getting data
+
+  const getdata = async()=>{
+
+    try{
+        
+      const data = await GetCompanyById(id) 
+      setaddCompany(data?.data?.data)
+      setloader(false)
+    }catch(err){
+        console.log(err) 
+        setloader(false)
+  }
+  }
+
+  useEffect(() => {
+   getdata()
+  }, [])
+
+  const defaultCategory = category?.filter((item)=>item._id === addCompany?.category);
+
   return (
     <>
       <div className="main-div ps-5">
@@ -207,54 +240,62 @@ function AddCompany() {
             className=" text-start "
             style={{ backgroundColor: "transparent", color: "orange" }}
           >
-            <h2 className="mt-4 mb-5"> Add Company </h2>
+            <h2 className="mt-4 mb-5"> Edit Company </h2>
 
           </div>
           <div className="mt-5 col-8">
 
+{
+    loader? (    <div className="d-flex justify-content-center mt-5">
+                <div className="loading-main ">
+                  <div className="loader" />
+                </div>
+              </div>):(
+                <>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Firm Name {' '} <span style={{color:"red"}}>*</span> </Form.Label>
-              <Form.Control type="text" onChange={handleCompany} name="firm_name" placeholder="Enter Firm Name" />
+              <Form.Control type="text" onChange={handleCompany} defaultValue={addCompany?.firm_name} name="firm_name" placeholder="Enter Firm Name" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Your Name</Form.Label>
-              <Form.Control type="text" onChange={handleCompany} name="person_name" placeholder="Enter Your Name" />
+              <Form.Control type="text" onChange={handleCompany} name="person_name" defaultValue={addCompany?.person_name} placeholder="Enter Your Name" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" onChange={handleCompany} name="email" placeholder="Enter Email" />
+              <Form.Control type="email" onChange={handleCompany} name="email" placeholder="Enter Email" defaultValue={addCompany?.email}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Address</Form.Label>
-              <Form.Control type="text" onChange={handleCompany} name="address" placeholder="Enter address" />
+              <Form.Control type="text" onChange={handleCompany} name="address" placeholder="Enter address" defaultValue={addCompany?.address}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>City</Form.Label>
-              <Form.Control type="text" onChange={handleCompany} name="city" placeholder="Enter City" />
+              <Form.Control type="text" onChange={handleCompany} name="city" placeholder="Enter City" defaultValue={addCompany?.city}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>State</Form.Label>
-              <Form.Control type="text" onChange={handleCompany} name="state" placeholder="Enter State" />
+              <Form.Control type="text" onChange={handleCompany} name="state" placeholder="Enter State" defaultValue={addCompany?.state}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Pincode</Form.Label>
-              <Form.Control type="number" onChange={handleCompany} name="pincode" placeholder="Enter Pincode" />
+              <Form.Control type="number" onChange={handleCompany} name="pincode" placeholder="Enter Pincode" defaultValue={addCompany?.pincode} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>GSTIN Number</Form.Label>
-              <Form.Control type="number" onChange={handleCompany} name="gstin_number" placeholder="Enter GST no." />
+              <Form.Control type="number" onChange={handleCompany} name="gstin_number" placeholder="Enter GST no." defaultValue={addCompany?.gstin_number}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Category {' '} <span style={{color:"red"}}>*</span></Form.Label>
               <select class="form-select" onChange={handleCompany} name="category" aria-label="Default select example">
+            <option>~ { defaultCategory && (`${defaultCategory[0]?.type} - ${defaultCategory[0]?.subtype} - ${defaultCategory[0]?.name}`)} ~</option>
                 {
                   category?.map((item, index) => {
                     return <option key={index} value={item._id}>{` ${item.type} - ${item.subtype} - ${item.name}`}</option>
@@ -275,6 +316,8 @@ function AddCompany() {
                   aria-valuemin="0" aria-valuemax="100" style={{width:(`${profilePercent}%`)}}>
                     {profilePercent}
                   </div>
+
+                 <img src={addCompany?.profile} alt="noumg" height={100} width={150} /> 
             </Form.Group>
 
             <hr />
@@ -289,7 +332,7 @@ function AddCompany() {
                   className="btn btn-sm btn-primary"
                   onClick={addImages}
                 >
-                  Add Huges number
+                  Add Images
                 </button>
               </Form.Group>
               {addCompany?.images?.map((item, index) => {
@@ -305,6 +348,7 @@ function AddCompany() {
                       </button>
                     </Form.Group>
                     <Form.Control type="file" onChange={(e) => handleImage(index, e)} name="" placeholder="Choose Image" />
+                    <img src={item} alt="no img" height={100} width={150} />
                   </>
                 )
               })
@@ -338,7 +382,7 @@ function AddCompany() {
                         Remove  {index + 1}
                       </button>
                     </Form.Group>
-                    <Form.Control type="text" onChange={(e) => handleHuges(index, e)} name="huges_number" placeholder="Enter Huges No." />
+                    <Form.Control type="text" onChange={(e) => handleHuges(index, e)} defaultValue={item} name="huges_number" placeholder="Enter Huges No." />
                   </>
                 )
               })
@@ -365,7 +409,7 @@ function AddCompany() {
                 return (
                   <>
                     <Form.Group className="mb-3 mt-3 d-flex justify-content-between align-items-center">
-                      <h5> Huges No {index + 1}</h5>
+                      <h5> Mobile No {index + 1}</h5>
                       <button
                         className="btn btn-sm btn-danger"
                         onClick={() => removeMobile(index)}
@@ -373,7 +417,7 @@ function AddCompany() {
                         Remove  {index + 1}
                       </button>
                     </Form.Group>
-                    <Form.Control type="tel" onChange={(e) => handleMobile(index, e)} name="mob_number" placeholder="Enter Mobile No." />
+                    <Form.Control type="tel" onChange={(e) => handleMobile(index, e)} name="mob_number" defaultValue={item} placeholder="Enter Mobile No." />
                   </>
                 )
               })
@@ -399,7 +443,7 @@ function AddCompany() {
                 return (
                   <>
                     <Form.Group className="mb-3 mt-3 d-flex justify-content-between align-items-center">
-                      <h5> Huges No {index + 1}</h5>
+                      <h5> Whatsapp No {index + 1}</h5>
                       <button
                         className="btn btn-sm btn-danger"
                         onClick={() => removeWhatsapp(index)}
@@ -407,7 +451,7 @@ function AddCompany() {
                         Remove  {index + 1}
                       </button>
                     </Form.Group>
-                    <Form.Control type="tel" onChange={(e) => handleWhatsapp(index, e)} name="whatsapp_number" placeholder="Enter Whatsapp No." />
+                    <Form.Control type="tel" onChange={(e) => handleWhatsapp(index, e)} defaultValue={addCompany?.item} name="whatsapp_number" placeholder="Enter Whatsapp No." />
                   </>
                 )
               })
@@ -417,6 +461,9 @@ function AddCompany() {
 
 
             <button className="btn btn-primary mb-5" onClick={handleSubmit}>Submit</button>
+            </>
+            )
+}
           </div>
         </div>
       </div>
@@ -424,4 +471,4 @@ function AddCompany() {
   )
 }
 
-export default AddCompany
+export default EditCompany

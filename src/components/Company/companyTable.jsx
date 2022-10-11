@@ -1,8 +1,33 @@
-import React, { useState } from "react";
+import React,{ useState,useEffect } from "react";
 import { Table } from "react-bootstrap";
+import { DeleteCompany } from "../Axios/apis";
 import SingleCompany from "./SingleCompany";
 
-const companyTable = ({ user }) => {
+const CompanyTable = ({ user }) => {
+  const [company, setcompany] = useState([])
+
+  
+  const handleDelete = async(id)=>{
+    try {
+      const yes  =window.confirm("Do you want to delete Company ?")
+      if(yes){
+        const temp={
+          id:`${id}`
+        }
+        
+        const newarr = company.filter((item)=>item._id!=id)
+        setcompany(newarr)
+       await DeleteCompany(temp)
+        window.alert("Company Deleted")
+    }  } catch (error) {
+      window.alert("Company didn't got Delete")
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+   setcompany(user)
+  }, [user])
   return (
     <>
       {user?.length !== 0 ? (
@@ -18,8 +43,11 @@ const companyTable = ({ user }) => {
 
             </tr>
           </thead>
-          {user?.map((data, index) => {
-            return (<SingleCompany data={data} ind={index} key={index} />
+          {company?.map((data, index) => {
+            return (<SingleCompany data={data} ind={index} key={index} 
+
+              handleDelete = {handleDelete}
+            />
             );
           })}
         </Table>
@@ -31,4 +59,4 @@ const companyTable = ({ user }) => {
     </>
   );
 };
-export default companyTable;
+export default CompanyTable;

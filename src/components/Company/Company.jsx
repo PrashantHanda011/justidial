@@ -7,7 +7,7 @@ import CommonHeader from "../Header/Header";
 import { BsSearch, BsFillCalendarDateFill } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import TableData from "./companyTable";
+import CompanyTable from "./CompanyTable";
 import axios from "axios";
 import Select from 'react-select'
 import { Link } from "react-router-dom";
@@ -34,8 +34,10 @@ function Company() {
       const { data } = await company();
       console.log(data)
       setcompanies(data.data);
+      setloder(true)
     } catch (error) {
       console.log(error);
+      setloder(false)
     }
   };
   
@@ -46,8 +48,10 @@ function Company() {
       const { data } = await GetallCategory();
       setcategory(data.data)
       console.log(data?.data);
+      setloder(true)
     } catch (error) {
       console.log(error);
+      setloder(true)
     }
   };
 
@@ -154,7 +158,7 @@ useEffect(() => {
                 </div>
                 
                 <Row style={{ marginTop: "20px" }}>
-                   <TableData user={(searchInput.length > 1) ?(filterData):(companies)} /> 
+                   <CompanyTable user={(searchInput.length > 1) ?(filterData):(companies)} /> 
                 </Row>
               </>
             ) : (

@@ -1,13 +1,36 @@
+import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import Singleuserfield from "./Singleuserfield";
+import { UserDelete } from "../Axios/apis";
 // import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
 
 const DashTable = ({ user }) => {
   const navigate = useNavigate();
-  const Details = (e) => {
-    navigate(`/usermanage/${e}`);
-  };
+
+
+  const [UserData, setUserData] = useState(user)
+
+  const handleDelete = async(id)=>{
+    try {
+      const yes  =window.confirm("Do you want to delete User ?")
+      if(yes){
+        const temp={
+          userId:`${id}`
+        }
+        
+        const newarr = UserData.filter((item)=>item._id!=id)
+        console.log(newarr)
+        setUserData(newarr)
+        await UserDelete(temp)
+        window.alert("User Deleted")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
   return (
     <>
       {user?.length !== 0 ? (
@@ -25,7 +48,7 @@ const DashTable = ({ user }) => {
               <th>Action</th>
             </tr>
           </thead>
-          {user?.map((data, id) => {
+          {UserData?.map((data, id) => {
             return <Singleuserfield
               id={id}
               key={id}
@@ -39,6 +62,7 @@ const DashTable = ({ user }) => {
               mob_number={data.mob_number}
               position={data.position}
               type={data.type}
+              handleDelete = {handleDelete}
             />
           })}
         </Table>

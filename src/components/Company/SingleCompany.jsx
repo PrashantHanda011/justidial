@@ -1,8 +1,14 @@
 import React,{useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { BsEye } from 'react-icons/bs';
+import {useNavigate} from 'react-router-dom'
+
+
 function SingleCompany(prop) {
     const [show, setShow] = useState(false);
+    const location = useNavigate()  
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
@@ -13,8 +19,12 @@ function SingleCompany(prop) {
                     <td className="Rtable-data">{prop?.data?.firm_name}</td>
                     <td className="Rtable-data">{prop?.data?.huges_number[0]}</td>
                     <td className="Rtable-data">{prop?.data?.address ?(prop?.data?.address):("No address")}</td>
-                    <td className="Rtable-data"> <button onClick={handleShow} className="btn btn-primary">View</button></td>
-                
+                    <td className="Rtable-data "> <button onClick={handleShow} className="btn mx-2 btn-primary btn-sm"><BsEye fontSize={20}
+                      className='my-0 '/></button>
+                    <button className='btn btn-success btn-sm mx-2' onClick={()=>location(`/companymanage/${prop?.data._id}`)}><AiFillEdit fontSize={20} /></button>
+                    <button className='btn btn-danger btn-sm mx-2' onClick={()=>prop?.handleDelete(prop?.data?._id)}><AiFillDelete fontSize={20}/></button>
+                    </td>
+
                 </tr>
                   <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>

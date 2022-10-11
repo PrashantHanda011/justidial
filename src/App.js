@@ -16,6 +16,8 @@ import { Categoryads } from "./components/Axios/apis";
 import Category from "./components/Ads/Category";
 import SendNotification from "./components/Send Notification/SendNotification";
 import AddCompany from "./components/Company/AddCompany";
+import UserEdit from "./components/UserManage/UserEdit";
+import EditCompany from "./components/Company/EditCompany";
 
 const UserContext = createContext();
 function App() {
@@ -63,6 +65,11 @@ function App() {
                   path="/usermanage"
                   element={ <UserManage />}
                 />
+                 <Route
+                  exact
+                  path="/usermanage/:id"
+                  element={ <UserEdit />}
+                />
 
                 <Route
                   exact
@@ -98,6 +105,11 @@ function App() {
                   exact
                   path="/companymanage"
                   element={ <Company />}
+                />
+                <Route
+                  exact
+                  path="/companymanage/:id"
+                  element={ <EditCompany/>}
                 />
                 <Route
                   exact

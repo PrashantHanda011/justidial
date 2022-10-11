@@ -1,9 +1,13 @@
 import React,{useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { UpdateUsers } from '../Axios/apis';
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { BsEye } from 'react-icons/bs';
+import { UpdateUsers, UserDelete } from '../Axios/apis';
+import {useNavigate} from 'react-router-dom'
 function Singleuserfield(data) {
-    const [show, setShow] = useState(false);
+  const location = useNavigate()  
+  const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -13,13 +17,15 @@ function Singleuserfield(data) {
       position:""
     })
 
+    
+
     const handleChange = (e)=>{
       let name = e.target.name
       setpositionData({...positionData,[name]:e.target.value})
     }
     const handleSubmit=async()=>{
       try {        
-        const data=await UpdateUsers(positionData)
+        await UpdateUsers(positionData)
         window.location.reload()
         setupdate(false)
       } catch (error) {
@@ -62,7 +68,11 @@ function Singleuserfield(data) {
                     >
                       {data?.firm_name}
                     </td>
-                    <td className="Rtable-data "> <button onClick={handleShow} className="btn btn-primary">View</button></td>
+                    <td className="Rtable-data "> <button onClick={handleShow} className="btn mx-2 btn-primary btn-sm"><BsEye fontSize={20}
+                      className='my-0 '/></button>
+                    <button className='btn btn-success btn-sm mx-2' onClick={()=>location(`/usermanage/${data?.userid}`)}><AiFillEdit fontSize={20} /></button>
+                    <button className='btn btn-danger btn-sm mx-2' onClick={()=>data?.handleDelete(data?.userid)}><AiFillDelete fontSize={20}/></button>
+                    </td>
 
                   </tr>
                   <Modal show={show} onHide={handleClose}>

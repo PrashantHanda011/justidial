@@ -11,7 +11,8 @@ import axios from "axios";
 import Select from 'react-select'
 import { Link } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal'
-import CompanyTable from "./CompanyTable";
+
+import CompanyTable from './CompanyTable'
 function Company() {
 
   const { show } = useContext(UserContext);

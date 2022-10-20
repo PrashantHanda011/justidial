@@ -289,7 +289,7 @@ function AddCompany() {
                   className="btn btn-sm btn-primary"
                   onClick={addImages}
                 >
-                  Add Huges number
+                  Add Images
                 </button>
               </Form.Group>
               {addCompany?.images?.map((item, index) => {
@@ -365,7 +365,7 @@ function AddCompany() {
                 return (
                   <>
                     <Form.Group className="mb-3 mt-3 d-flex justify-content-between align-items-center">
-                      <h5> Huges No {index + 1}</h5>
+                      <h5> Mobile No {index + 1}</h5>
                       <button
                         className="btn btn-sm btn-danger"
                         onClick={() => removeMobile(index)}
@@ -399,7 +399,7 @@ function AddCompany() {
                 return (
                   <>
                     <Form.Group className="mb-3 mt-3 d-flex justify-content-between align-items-center">
-                      <h5> Huges No {index + 1}</h5>
+                      <h5> Whatsapp No {index + 1}</h5>
                       <button
                         className="btn btn-sm btn-danger"
                         onClick={() => removeWhatsapp(index)}

@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import { DeleteCompany } from "../Axios/apis";
 import SingleCompany from "./SingleCompany";
 
-const CompanyTable = ({ user }) => {
+const CTable = ({ user }) => {
   const [company, setcompany] = useState([])
 
   
@@ -59,4 +59,5 @@ const CompanyTable = ({ user }) => {
     </>
   );
 };
-export default CompanyTable;
+
+export default CTable;

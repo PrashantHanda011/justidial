@@ -11,8 +11,7 @@ import axios from "axios";
 import Select from 'react-select'
 import { Link } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal'
-
-import CompanyTable from './CompanyTable'
+import CTable from "./CTable";
 function Company() {
 
   const { show } = useContext(UserContext);
@@ -159,7 +158,7 @@ useEffect(() => {
                 </div>
                 
                 <Row style={{ marginTop: "20px" }}>
-                   <CompanyTable user={(searchInput.length > 1) ?(filterData):(companies)} /> 
+                   <CTable user={(searchInput.length > 1) ?(filterData):(companies)} /> 
                 </Row>
               </>
             ) : (

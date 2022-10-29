@@ -156,7 +156,7 @@ function UserEdit() {
 
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>GSTIN Number</Form.Label>
-                    <Form.Control defaultValue={User?.gstin_number} type="number" name="gstin_number" onChange={handleChange} placeholder="GSTIN Number" />
+                    <Form.Control defaultValue={User?.gstin_number} type="text" name="gstin_number" onChange={handleChange} placeholder="GSTIN Number" />
                   </Form.Group>
 
                   {/* <Form.Group className="mb-3" controlId="formBasicEmail">

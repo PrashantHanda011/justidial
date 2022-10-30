@@ -249,7 +249,7 @@ function AddCompany() {
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>GSTIN Number</Form.Label>
-              <Form.Control type="number" onChange={handleCompany} name="gstin_number" placeholder="Enter GST no." />
+              <Form.Control type="text" onChange={handleCompany} name="gstin_number" placeholder="Enter GST no." />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">

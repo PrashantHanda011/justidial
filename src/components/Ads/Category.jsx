@@ -3,7 +3,7 @@ import CommonHeader from '../Header/Header'
 import {storage} from '../firebase/index'
 import {getDownloadURL, ref,uploadBytes, uploadBytesResumable} from 'firebase/storage'
 import axios from 'axios'
-import {  Categoryads, Topads } from '../Axios/apis'
+import {   Topads } from '../Axios/apis'
 import { useNavigate } from 'react-router-dom'
 function Category() {
   const Navigate =useNavigate()
@@ -37,9 +37,9 @@ function Category() {
     }
     const handlesubmit=async()=>{
       try {
-          const data = await Categoryads(url);
-          console.log(data);
-          Navigate('/ads')
+       //   const data = await Categoryads(url);
+          //console.log(data);
+        //  Navigate('/ads')
       } catch (error) {
         console.log(error);
       }

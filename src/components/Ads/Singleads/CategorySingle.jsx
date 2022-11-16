@@ -17,9 +17,10 @@ function CategorySingle(prop) {
                             );
                             if (yes) {
                                 try{
-                                    const data = await DeleteCategoryads(deletedata);
-                                    console.log(data);
-                                    window.location.reload();
+                            //        const data = await DeleteCategoryads(deletedata);
+                              //      console.log(data);
+                                //    window.location.reload();
+                                prop.handleDeleteCategoryAd(prop?.item);
                             }catch(err){
                             console.log(err)
                             }

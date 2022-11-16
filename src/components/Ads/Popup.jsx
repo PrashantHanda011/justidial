@@ -14,6 +14,7 @@ function Popup() {
     })
     const [imgupload, setimgupload] = useState(0)
     console.log(imgupload)
+   
     const handleChange= async(e)=>{
       e.preventDefault()
         let image=e.target.files[0]

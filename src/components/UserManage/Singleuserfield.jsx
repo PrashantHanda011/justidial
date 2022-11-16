@@ -5,6 +5,8 @@ import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { BsEye } from 'react-icons/bs';
 import { UpdateUsers, UserDelete } from '../Axios/apis';
 import {useNavigate} from 'react-router-dom'
+
+
 function Singleuserfield(data) {
   const location = useNavigate()  
   const [show, setShow] = useState(false);
@@ -52,7 +54,7 @@ function Singleuserfield(data) {
                     </td>
                     <td
                       className="Rtable-data"
-                      style={{ cursor: "pointer" }}
+                      style={{ cursor: "pointer",wordBreak:"break-all" }}
                     >
                       {data?.mob_number}
                     </td>
@@ -68,7 +70,8 @@ function Singleuserfield(data) {
                     >
                       {data?.firm_name}
                     </td>
-                    <td className="Rtable-data "> <button onClick={handleShow} className="btn mx-2 btn-primary btn-sm"><BsEye fontSize={20}
+                    <td className="Rtable-data d-flex justify-content-around "> 
+                    <button onClick={handleShow} className="btn mx-2 btn-primary btn-sm"><BsEye fontSize={20}
                       className='my-0 '/></button>
                     <button className='btn btn-success btn-sm mx-2' onClick={()=>location(`/usermanage/${data?.userid}`)}><AiFillEdit fontSize={20} /></button>
                     <button className='btn btn-danger btn-sm mx-2' onClick={()=>data?.handleDelete(data?.userid)}><AiFillDelete fontSize={20}/></button>

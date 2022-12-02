@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 let token = JSON.parse(localStorage.getItem('RentOutToken'))
 const API = axios.create({
-  baseURL: "https://stalo.herokuapp.com",
+  baseURL: "https://stalo.vercel.app/",
   headers:{
     Authorization:`Bearer ${token}`
   }
